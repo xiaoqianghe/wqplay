@@ -1,6 +1,13 @@
 package com.xiaoqianghe.wqplay.ui.activity;
 
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+
 import com.xiaoqianghe.wqplay.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * @包名: com.xiaoqianghe.wqplay.ui.activity
@@ -13,6 +20,11 @@ import com.xiaoqianghe.wqplay.R;
 public class AppInfoActivity extends BaseActivity {
 
 
+    @BindView(R.id.bt_togetInfo)
+    Button btTogetInfo;
+    @BindView(R.id.tv_info)
+    TextView tvInfo;
+
     @Override
     protected void init() {
 
@@ -21,5 +33,12 @@ public class AppInfoActivity extends BaseActivity {
     @Override
     protected int setLayout() {
         return R.layout.activity_appinfo;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }
