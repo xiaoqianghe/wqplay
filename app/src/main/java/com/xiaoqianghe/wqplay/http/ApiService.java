@@ -4,7 +4,6 @@ import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 
 /**
  * @包名: com.xiaoqianghe.wqplay.http
@@ -18,7 +17,7 @@ public interface ApiService {
     public static final String BASE_URL = "http://112.124.22.238:8081/course_api/cniaoplay/";
 
         @GET("featured")
-        Call<AppInfo> getAppInfo(@Query("P") String json_params);
+        Call<AppInfo> getAppInfo();
 
 
 }

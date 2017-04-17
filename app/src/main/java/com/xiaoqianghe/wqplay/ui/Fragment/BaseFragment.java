@@ -32,11 +32,8 @@ public abstract class BaseFragment<T extends BasePresenter>extends Fragment impl
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // super.onCreateView(inflater, container, savedInstanceState);
-
         mRootView=inflater.inflate(setLayout(),container,false);
-
         mUnbinder= ButterKnife.bind(this,mRootView);
-
         return  mRootView;
     }
 

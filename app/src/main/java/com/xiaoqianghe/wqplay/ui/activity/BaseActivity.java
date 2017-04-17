@@ -26,7 +26,6 @@ public abstract class BaseActivity<T extends BasePresenter>extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setLayout());
-
         mUnbinder= ButterKnife.bind(this);
         init();
     }

@@ -20,8 +20,6 @@ public interface AppInfoContract {
 
         void onLoadMoreComplete();
 
-
-
     }
 
 
