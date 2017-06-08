@@ -1,6 +1,13 @@
 package com.xiaoqianghe.wqplay.presenter;
 
+import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
+import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
+import com.xiaoqianghe.wqplay.data.RecommedModel;
 import com.xiaoqianghe.wqplay.presenter.contract.RecommendContract;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Author：Wq
@@ -8,19 +15,35 @@ import com.xiaoqianghe.wqplay.presenter.contract.RecommendContract;
  * Description：//todo
  */
 
-public class RecommendPresenter implements RecommendContract.Presenter {
+public class RecommendPresenter extends BasePresenter<RecommedModel,RecommendContract.View> {
 
 
-    private RecommendContract.View mView;
-    public RecommendPresenter(RecommendContract.View mView) {
-        this.mView=mView;
+    public RecommendPresenter(RecommedModel mModel, RecommendContract.View mView) {
+        super(mModel, mView);
     }
 
-    @Override
-    public void requestData() {
-        //获取网络数据
+    public void requestDatas(){
+        mView.showLoading();
+        mModel.getApps(new Callback<PageBean<AppInfo>>(){
 
+            @Override
+            public void onResponse(Call<PageBean<AppInfo>> call, Response<PageBean<AppInfo>> response) {
+                if(null!=response){
+                    mView.showResult(response.body().getDatas());
+                }else{
+                    mView.showNodata();
+                }
 
+                mView.dismissLoading();
+            }
+
+            @Override
+            public void onFailure(Call<PageBean<AppInfo>> call, Throwable t) {
+                mView.dismissLoading();
+                mView.showError(t.getMessage());
+
+            }
+        });
 
     }
 }

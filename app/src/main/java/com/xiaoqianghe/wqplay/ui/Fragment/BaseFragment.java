@@ -28,6 +28,9 @@ public abstract class BaseFragment<T extends BasePresenter>extends Fragment impl
     private View mRootView;
 
 
+
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +43,9 @@ public abstract class BaseFragment<T extends BasePresenter>extends Fragment impl
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        init();
+
     }
 
     @Override

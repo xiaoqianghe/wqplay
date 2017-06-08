@@ -29,7 +29,7 @@ public class AppInfoModel {
      * */
     private void getAppInfo(Callback<AppInfo> callback){
 
-        mApiService.getAppInfo().enqueue(callback);
+       // mApiService.getAppInfo().enqueue(callback);
 
     }
 }

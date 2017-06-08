@@ -16,8 +16,8 @@ import com.xiaoqianghe.wqplay.ui.BaseView;
 
 public class BasePresenter<M,V extends BaseView> {
 
-    private M mModel;
-    private V mView;
+    protected M mModel;
+    protected V mView;
 
     protected Context mContext;
 
