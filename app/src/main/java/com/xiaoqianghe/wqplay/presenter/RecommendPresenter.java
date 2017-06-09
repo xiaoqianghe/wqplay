@@ -41,7 +41,6 @@ public class RecommendPresenter extends BasePresenter<RecommedModel,RecommendCon
             public void onFailure(Call<PageBean<AppInfo>> call, Throwable t) {
                 mView.dismissLoading();
                 mView.showError(t.getMessage());
-
             }
         });
 

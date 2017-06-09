@@ -1,10 +1,15 @@
 package com.xiaoqianghe.wqplay.ui.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.widget.LinearLayout;
 
 import com.xiaoqianghe.wqplay.R;
+import com.xiaoqianghe.wqplay.ui.adapter.ViewPagerAdapter;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Author：Wq
@@ -12,12 +17,41 @@ import com.xiaoqianghe.wqplay.R;
  * Description：//todo
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+
+//    @BindView(R.id.view_pager)
+//    ViewPager viewPager;
+//    @BindView(R.id.drawer_layout)
+//    LinearLayout drawerLayout;
+
+    private ViewPager viewPager;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void init() {
+        viewPager=(ViewPager)findViewById(R.id.view_pager);
+        initDrawerLayout();
+        initTablayout();
+    }
 
-        setContentView(R.layout.activity_main);
+    private void initTablayout() {
+        PagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
+    }
+
+    private void initDrawerLayout() {
+
+    }
+
+    @Override
+    protected int setLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

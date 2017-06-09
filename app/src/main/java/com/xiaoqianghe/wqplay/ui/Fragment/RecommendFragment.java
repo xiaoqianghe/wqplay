@@ -1,7 +1,27 @@
 package com.xiaoqianghe.wqplay.ui.Fragment;
 
+import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.xiaoqianghe.wqplay.R;
+import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.presenter.RecommendPresenter;
+import com.xiaoqianghe.wqplay.presenter.contract.RecommendContract;
+import com.xiaoqianghe.wqplay.ui.adapter.RecomendAppAdapter;
+import com.xiaoqianghe.wqplay.ui.decoration.DividerItemDecoration;
+
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Author：Wq
@@ -9,10 +29,20 @@ import com.xiaoqianghe.wqplay.presenter.RecommendPresenter;
  * Description：//todo
  */
 
-public class RecommendFragment extends BaseFragment<RecommendPresenter> {
+public class RecommendFragment extends BaseFragment<RecommendPresenter> implements RecommendContract.View {
+
+    @BindView(R.id.recycle_view)
+    RecyclerView mRecyclerView;
+    private RecomendAppAdapter mAdatper;
+
+    private RecommendPresenter mPresenter;
+
+    private ProgressDialog mProgressDialog;
+
     @Override
     protected void init() {
-
+        //获取数据
+        mPresenter.requestDatas();
 
 
     }
@@ -24,11 +54,49 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> {
 
     @Override
     public void showLoading() {
+        mProgressDialog.show();
 
     }
 
     @Override
     public void dismissLoading() {
+        if (mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
 
     }
+
+    @Override
+    public void showError(String str) {
+        Toast.makeText(getActivity(), "服务器开小差了：" + str, Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void showNodata() {
+        Toast.makeText(getActivity(), "暂时无数据，请吃完饭再来", Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void showResult(List<AppInfo> datas) {
+        initRecycleView(datas);
+    }
+
+    private void initRecycleView(List<AppInfo> datas) {
+        //为RecyclerView设置布局管理器
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //为RecyclerView设置分割线(这个可以对DividerItemDecoration进行修改，自定义)
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.HORIZONTAL_LIST));
+
+        //动画
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
+
+        mAdatper = new RecomendAppAdapter(datas,getActivity());
+
+        mRecyclerView.setAdapter(mAdatper);
+    }
+
+
 }

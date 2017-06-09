@@ -1,8 +1,9 @@
 package com.xiaoqianghe.wqplay.ui.Fragment;
 
-import android.app.Fragment;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ public abstract class BaseFragment<T extends BasePresenter>extends Fragment impl
         // super.onCreateView(inflater, container, savedInstanceState);
         mRootView=inflater.inflate(setLayout(),container,false);
         mUnbinder= ButterKnife.bind(this,mRootView);
+
         return  mRootView;
     }
 

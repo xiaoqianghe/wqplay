@@ -2,6 +2,7 @@ package com.xiaoqianghe.wqplay.ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.xiaoqianghe.wqplay.presenter.BasePresenter;
 
@@ -17,7 +18,7 @@ import butterknife.Unbinder;
  * @描述 : TODO  所有Activity的页面的基类
  */
 
-public abstract class BaseActivity<T extends BasePresenter>extends Activity {
+public abstract class BaseActivity<T extends BasePresenter>extends AppCompatActivity {
 
     private T mPresenter;
 
