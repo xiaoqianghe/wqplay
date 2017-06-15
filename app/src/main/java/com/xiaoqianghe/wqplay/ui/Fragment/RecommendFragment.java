@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.xiaoqianghe.wqplay.R;
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
@@ -38,7 +40,7 @@ import butterknife.Unbinder;
  */
 
 public class RecommendFragment extends BaseFragment<RecommendPresenter> implements RecommendContract.View {
-
+    private final String TAG = this.getClass().getSimpleName();
     @BindView(R.id.recycle_view)
     RecyclerView mRecyclerView;
     private RecomendAppAdapter mAdatper;
@@ -47,18 +49,10 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
     @Inject
     ProgressDialog mProgressDialog;
 
-
-
-
-
     @Override
     protected void init() {
-
-       // mPresenter=new RecommendPresenter(this);
-
         //获取数据
         mPresenter.requestDatas();
-
     }
 
     @Override
@@ -68,14 +62,8 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
-
-//        DaggerRecommendComponent.builder().appComponent(appComponent)
-//                .remmendModule(new RecommendModule(this)).build().inject(this);
-
         DaggerRecommendComponent.builder().appComponent(appComponent)
         .recommendModule(new RecommendModule(this)).build().inject(this);
-
-
     }
 
     @Override
@@ -94,18 +82,20 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
 
     @Override
     public void showError(String str) {
+        Log.d(TAG,"======showError");
         Toast.makeText(getActivity(), "服务器开小差了：" + str, Toast.LENGTH_LONG).show();
 
     }
 
     @Override
     public void showNodata() {
+        Log.d(TAG,"=============showNodata()");
         Toast.makeText(getActivity(), "暂时无数据，请吃完饭再来", Toast.LENGTH_LONG).show();
-
     }
 
     @Override
     public void showResult(List<AppInfo> datas) {
+        Log.d(TAG,"showResult::datas::"+new Gson().toJson(datas));
         initRecycleView(datas);
     }
 
@@ -114,13 +104,9 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         //为RecyclerView设置分割线(这个可以对DividerItemDecoration进行修改，自定义)
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.HORIZONTAL_LIST));
-
         //动画
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
         mAdatper = new RecomendAppAdapter(datas,getActivity());
-
         mRecyclerView.setAdapter(mAdatper);
     }
 

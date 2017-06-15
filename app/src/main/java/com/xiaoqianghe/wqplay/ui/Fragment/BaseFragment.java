@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.xiaoqianghe.wqplay.AppApplication;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
 import com.xiaoqianghe.wqplay.presenter.BasePresenter;
 import com.xiaoqianghe.wqplay.ui.BaseView;
@@ -31,6 +32,7 @@ public abstract class BaseFragment<T extends BasePresenter>extends Fragment impl
     private ProgressDialog mProgressDialog;
     private Unbinder mUnbinder;
     private View mRootView;
+    private AppApplication mApplication;
 
     @Inject
     T mPresenter;
@@ -51,6 +53,8 @@ public abstract class BaseFragment<T extends BasePresenter>extends Fragment impl
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        this.mApplication=(AppApplication) getActivity().getApplication();
+        setupActivityComponent(mApplication.getAppComponent());
         init();
 
     }

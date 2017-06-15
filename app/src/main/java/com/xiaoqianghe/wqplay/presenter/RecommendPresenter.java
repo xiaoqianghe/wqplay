@@ -19,7 +19,6 @@ import retrofit2.Response;
 
 public class RecommendPresenter extends BasePresenter<RecommedModel,RecommendContract.View> {
 
-
     @Inject
     public RecommendPresenter(RecommedModel mModel, RecommendContract.View mView) {
         super(mModel, mView);

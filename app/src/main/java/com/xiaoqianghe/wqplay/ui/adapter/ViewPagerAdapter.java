@@ -5,6 +5,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 
+import com.xiaoqianghe.wqplay.ui.Fragment.CategoryFragment;
+import com.xiaoqianghe.wqplay.ui.Fragment.GamesFragment;
+import com.xiaoqianghe.wqplay.ui.Fragment.GuiderFragment;
+import com.xiaoqianghe.wqplay.ui.Fragment.RankingFragment;
 import com.xiaoqianghe.wqplay.ui.Fragment.RecommendFragment;
 import com.xiaoqianghe.wqplay.ui.bean.FragmentInfo;
 
@@ -20,23 +24,17 @@ import java.util.List;
 public class ViewPagerAdapter extends FragmentStatePagerAdapter{
 
     private List<FragmentInfo>  mFragmentList= new ArrayList<FragmentInfo>();
-//    public ViewPagerAdapter(FragmentManager fragmentManager) {
-//        super(fragmentManager);
-//    }
-
     public ViewPagerAdapter(FragmentManager manager) {
         super(manager);
         initFragmentList();
     }
 
-
     private void initFragmentList() {
-
-        mFragmentList.add(new FragmentInfo("推荐",RecommendFragment.class));
-        mFragmentList.add(new FragmentInfo("排行",RecommendFragment.class));
-        mFragmentList.add(new FragmentInfo("游戏",RecommendFragment.class));
-        mFragmentList.add(new FragmentInfo("分类",RecommendFragment.class));
-        mFragmentList.add(new FragmentInfo("推荐",RecommendFragment.class));
+        mFragmentList.add(new FragmentInfo("篮球",RecommendFragment.class));
+        mFragmentList.add(new FragmentInfo("足球",RankingFragment.class));
+        mFragmentList.add(new FragmentInfo("乒乓球",GamesFragment.class));
+        mFragmentList.add(new FragmentInfo("羽毛球",CategoryFragment.class));
+        mFragmentList.add(new FragmentInfo("橄榄球",GuiderFragment.class));
     }
 
     @Override
