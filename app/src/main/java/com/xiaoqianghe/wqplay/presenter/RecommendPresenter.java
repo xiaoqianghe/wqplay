@@ -26,25 +26,29 @@ public class RecommendPresenter extends BasePresenter<RecommedModel,RecommendCon
 
     public void requestDatas(){
         mView.showLoading();
-        mModel.getApps(new Callback<PageBean<AppInfo>>(){
+        //OkHttp中的的网络请求
+//        mModel.getApps(new Callback<PageBean<AppInfo>>(){
+//
+//            @Override
+//            public void onResponse(Call<PageBean<AppInfo>> call, Response<PageBean<AppInfo>> response) {
+//                if(null!=response){
+//                    mView.showResult(response.body().getDatas());
+//                }else{
+//                    mView.showNodata();
+//                }
+//
+//                mView.dismissLoading();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<PageBean<AppInfo>> call, Throwable t) {
+//                mView.dismissLoading();
+//                mView.showError(t.getMessage());
+//            }
+//        });
 
-            @Override
-            public void onResponse(Call<PageBean<AppInfo>> call, Response<PageBean<AppInfo>> response) {
-                if(null!=response){
-                    mView.showResult(response.body().getDatas());
-                }else{
-                    mView.showNodata();
-                }
 
-                mView.dismissLoading();
-            }
 
-            @Override
-            public void onFailure(Call<PageBean<AppInfo>> call, Throwable t) {
-                mView.dismissLoading();
-                mView.showError(t.getMessage());
-            }
-        });
 
     }
 }

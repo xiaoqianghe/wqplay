@@ -1,11 +1,13 @@
 package com.xiaoqianghe.wqplay.http;
 
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
+import com.xiaoqianghe.wqplay.bean.requestbean.BaseBean;
 import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
+import rx.Observable;
 
 /**
  * @包名: com.xiaoqianghe.wqplay.http
@@ -20,8 +22,12 @@ public interface ApiService {
 
     public static final String BASE_URL = "http://112.124.22.238:8081/course_api/cniaoplay/";
 
-        @GET("featured")
-        Call<PageBean<AppInfo>> getApps(@Query("p") String jsonParams);
+//        @GET("featured")
+//        Call<PageBean<AppInfo>> getApps(@Query("p") String jsonParams);
+
+
+    @GET("featured2")
+    public Observable<BaseBean<PageBean<AppInfo>>> getApps(@Query("p") String jsonParam);
 
 
 }
