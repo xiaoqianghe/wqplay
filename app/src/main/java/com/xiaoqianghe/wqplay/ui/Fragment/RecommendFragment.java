@@ -12,12 +12,20 @@ import android.widget.Toast;
 
 import com.xiaoqianghe.wqplay.R;
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
+import com.xiaoqianghe.wqplay.di.component.AppComponent;
+
+
+import com.xiaoqianghe.wqplay.di.component.DaggerRecommendComponent;
+import com.xiaoqianghe.wqplay.di.module.RecommendModule;
 import com.xiaoqianghe.wqplay.presenter.RecommendPresenter;
 import com.xiaoqianghe.wqplay.presenter.contract.RecommendContract;
+import com.xiaoqianghe.wqplay.ui.BaseView;
 import com.xiaoqianghe.wqplay.ui.adapter.RecomendAppAdapter;
 import com.xiaoqianghe.wqplay.ui.decoration.DividerItemDecoration;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,21 +43,39 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
     RecyclerView mRecyclerView;
     private RecomendAppAdapter mAdatper;
 
-    private RecommendPresenter mPresenter;
 
-    private ProgressDialog mProgressDialog;
+    @Inject
+    ProgressDialog mProgressDialog;
+
+
+
+
 
     @Override
     protected void init() {
+
+       // mPresenter=new RecommendPresenter(this);
+
         //获取数据
         mPresenter.requestDatas();
-
 
     }
 
     @Override
     protected int setLayout() {
         return R.layout.activity_recommend;
+    }
+
+    @Override
+    public void setupActivityComponent(AppComponent appComponent) {
+
+//        DaggerRecommendComponent.builder().appComponent(appComponent)
+//                .remmendModule(new RecommendModule(this)).build().inject(this);
+
+        DaggerRecommendComponent.builder().appComponent(appComponent)
+        .recommendModule(new RecommendModule(this)).build().inject(this);
+
+
     }
 
     @Override

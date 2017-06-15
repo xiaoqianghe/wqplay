@@ -5,6 +5,8 @@ import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
 import com.xiaoqianghe.wqplay.data.RecommedModel;
 import com.xiaoqianghe.wqplay.presenter.contract.RecommendContract;
 
+import javax.inject.Inject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,6 +20,7 @@ import retrofit2.Response;
 public class RecommendPresenter extends BasePresenter<RecommedModel,RecommendContract.View> {
 
 
+    @Inject
     public RecommendPresenter(RecommedModel mModel, RecommendContract.View mView) {
         super(mModel, mView);
     }
