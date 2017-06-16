@@ -1,10 +1,13 @@
 package com.xiaoqianghe.wqplay.presenter;
 
 import android.support.annotation.MainThread;
+import android.util.Log;
 
+import com.google.gson.Gson;
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.bean.requestbean.BaseBean;
 import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
+import com.xiaoqianghe.wqplay.common.rx.RxHttpResponseCompat;
 import com.xiaoqianghe.wqplay.data.RecommedModel;
 import com.xiaoqianghe.wqplay.presenter.contract.RecommendContract;
 
@@ -27,6 +30,8 @@ import rx.schedulers.Schedulers;
  */
 
 public class RecommendPresenter extends BasePresenter<RecommedModel,RecommendContract.View> {
+
+    private final String TAG = this.getClass().getSimpleName();
 
     @Inject
     public RecommendPresenter(RecommedModel mModel, RecommendContract.View mView) {
@@ -59,43 +64,77 @@ public class RecommendPresenter extends BasePresenter<RecommedModel,RecommendCon
 
 
         //RxJava+Retrofit的网络请求的整合
+//        mModel.getApps()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Subscriber<BaseBean<PageBean<AppInfo>>>() {
+//
+//            @Override
+//            public void onStart() {
+//                super.onStart();
+//                mView.showLoading();
+//            }
+//
+//            @Override
+//            public void onCompleted() {
+//                mView.dismissLoading();
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                mView.dismissLoading();
+//
+//            }
+//
+//            @Override
+//            public void onNext(BaseBean<PageBean<AppInfo>> pageBeanBaseBean) {
+//                Log.d(TAG,"===========:"+new Gson().toJson(pageBeanBaseBean));
+//                if(null!=pageBeanBaseBean){
+//                    PageBean<AppInfo> mPageBean=(PageBean<AppInfo>)pageBeanBaseBean.getData();
+//                    mView.showResult(mPageBean.getDatas());
+//                }else{
+//                    mView.showNodata();
+//                }
+//
+//                mView.dismissLoading();
+//
+//            }
+//        });
+
+        // 预先处理
+        mView.showLoading();
+
         mModel.getApps()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<BaseBean<PageBean<AppInfo>>>() {
+                .compose(RxHttpResponseCompat.<PageBean<AppInfo>>compatResult())
+                .subscribe(new Subscriber<PageBean<AppInfo>>() {
+                    @Override
+                    public void onCompleted() {
+                        mView.dismissLoading();
 
-            @Override
-            public void onStart() {
-                super.onStart();
-                mView.showLoading();
-            }
+                    }
 
-            @Override
-            public void onCompleted() {
-                mView.dismissLoading();
+                    @Override
+                    public void onError(Throwable e) {
+                        mView.dismissLoading();
 
-            }
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                mView.dismissLoading();
+                    @Override
+                    public void onNext(PageBean<AppInfo> appInfoPageBean) {
+                        Log.d(TAG,"===========:"+new Gson().toJson(appInfoPageBean));
+                        if(null!=appInfoPageBean){
+                            mView.showResult(appInfoPageBean.getDatas());
+                        }else{
+                            mView.showNodata();
+                        }
+                            mView.dismissLoading();
 
-            }
+                    }
+                });
 
-            @Override
-            public void onNext(BaseBean<PageBean<AppInfo>> pageBeanBaseBean) {
-
-                if(null!=pageBeanBaseBean){
-                    PageBean<AppInfo> mDatas=(PageBean<AppInfo>)pageBeanBaseBean.getData();
-                    mView.showResult((List<AppInfo>) mDatas);
-                }else{
-                    mView.showNodata();
-                }
-
-                mView.dismissLoading();
-
-            }
-        });
 
 
 
