@@ -30,14 +30,10 @@ public class BasePresenter<M,V extends BaseView> {
     }
 
     private void initContext() {
-
-//        if(mView instanceof Fragment){
-//            mContext=((Fragment) mView).getActivity();
-//        }else{
-//            mContext=(Activity)mView;
-//
-//        }
-
-        mContext=((Fragment) mView).getActivity();
+        if(mView instanceof Fragment){
+            mContext=((Fragment) mView).getActivity();
+        }else{
+            mContext=(Activity)mView;
+        }
     }
 }
