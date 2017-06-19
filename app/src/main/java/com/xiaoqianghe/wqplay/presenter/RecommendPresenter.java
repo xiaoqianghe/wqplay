@@ -8,6 +8,7 @@ import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.bean.requestbean.BaseBean;
 import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
 import com.xiaoqianghe.wqplay.common.rx.RxHttpResponseCompat;
+import com.xiaoqianghe.wqplay.common.rx.subscriber.ProgressDialogSubscriber;
 import com.xiaoqianghe.wqplay.data.RecommedModel;
 import com.xiaoqianghe.wqplay.presenter.contract.RecommendContract;
 
@@ -103,41 +104,55 @@ public class RecommendPresenter extends BasePresenter<RecommedModel,RecommendCon
 //        });
 
         // 预先处理
-        mView.showLoading();
+//        mView.showLoading();
+//        mModel.getApps()
+////                .subscribeOn(Schedulers.io())
+////                .observeOn(AndroidSchedulers.mainThread())
+//                .compose(RxHttpResponseCompat.<PageBean<AppInfo>>compatResult())
+//                .subscribe(new Subscriber<PageBean<AppInfo>>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        mView.dismissLoading();
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        mView.dismissLoading();
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(PageBean<AppInfo> appInfoPageBean) {
+//                        Log.d(TAG,"===========:"+new Gson().toJson(appInfoPageBean));
+//                        if(null!=appInfoPageBean){
+//                            mView.showResult(appInfoPageBean.getDatas());
+//                        }else{
+//                            mView.showNodata();
+//                        }
+//                            mView.dismissLoading();
+//
+//                    }
+//                });
 
+
+        //ProgressDialogSubcriber
         mModel.getApps()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxHttpResponseCompat.<PageBean<AppInfo>>compatResult())
-                .subscribe(new Subscriber<PageBean<AppInfo>>() {
-                    @Override
-                    public void onCompleted() {
-                        mView.dismissLoading();
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        mView.dismissLoading();
-
-                    }
-
+                .subscribe(new ProgressDialogSubscriber<PageBean<AppInfo>>(mContext) {
                     @Override
                     public void onNext(PageBean<AppInfo> appInfoPageBean) {
-                        Log.d(TAG,"===========:"+new Gson().toJson(appInfoPageBean));
+                        super.onNext(appInfoPageBean);
                         if(null!=appInfoPageBean){
                             mView.showResult(appInfoPageBean.getDatas());
                         }else{
                             mView.showNodata();
                         }
-                            mView.dismissLoading();
-
                     }
                 });
 
 
-
-
+        //
 
     }
 }

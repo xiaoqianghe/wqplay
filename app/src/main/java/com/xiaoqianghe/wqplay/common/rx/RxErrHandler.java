@@ -1,6 +1,7 @@
 package com.xiaoqianghe.wqplay.common.rx;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.google.gson.JsonParseException;
 import com.xiaoqianghe.wqplay.common.exception.ApiException;
@@ -48,6 +49,16 @@ public class RxErrHandler {
         }else {
 
         }
+
+        return exception;
+
+    }
+
+
+    public void  showErrorMessage(BaseException e){
+
+
+        Toast.makeText(mContext,e.getDisplayMessage(),Toast.LENGTH_LONG).show();
 
     }
 }

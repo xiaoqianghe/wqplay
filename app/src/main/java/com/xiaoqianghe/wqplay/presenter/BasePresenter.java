@@ -1,8 +1,9 @@
 package com.xiaoqianghe.wqplay.presenter;
 
 import android.app.Activity;
-import android.app.Fragment;
+
 import android.content.Context;
+import android.support.v4.app.Fragment;
 
 import com.xiaoqianghe.wqplay.ui.BaseView;
 
@@ -25,16 +26,18 @@ public class BasePresenter<M,V extends BaseView> {
         this.mModel = mModel;
         this.mView = mView;
 
-       // initContext();
+        initContext();
     }
 
     private void initContext() {
 
-        if(mView instanceof Fragment){
-            mContext=((Fragment) mView).getActivity();
-        }else{
-            mContext=(Activity)mView;
+//        if(mView instanceof Fragment){
+//            mContext=((Fragment) mView).getActivity();
+//        }else{
+//            mContext=(Activity)mView;
+//
+//        }
 
-        }
+        mContext=((Fragment) mView).getActivity();
     }
 }

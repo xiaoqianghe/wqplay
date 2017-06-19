@@ -8,4 +8,7 @@
     <string name="guide_1">全新改版</string>
     <string name="guide_2">视频购物</string>
     <string name="guide_3">评价晒图</string>
+
+
+    <string name="loading">加载中...</string>
 </resources>

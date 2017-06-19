@@ -6,7 +6,9 @@ import com.xiaoqianghe.wqplay.common.exception.ApiException;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * Author：Wq
@@ -39,7 +41,7 @@ public class RxHttpResponseCompat {
                         }
 
                     }
-                });
+                }).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io());
             }
         };
 
