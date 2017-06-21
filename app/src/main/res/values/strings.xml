@@ -11,4 +11,6 @@
 
 
     <string name="loading">加载中...</string>
+
+    <string name="empty_data">暂无数据</string>
 </resources>

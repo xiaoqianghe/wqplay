@@ -3,6 +3,7 @@ package com.xiaoqianghe.wqplay.di.component;
 import com.xiaoqianghe.wqplay.di.FragmentScope;
 import com.xiaoqianghe.wqplay.di.module.RecommendModule;
 import com.xiaoqianghe.wqplay.ui.Fragment.RecommendFragment;
+import com.xiaoqianghe.wqplay.ui.Fragment.RecommendProFragment;
 
 import dagger.Component;
 
@@ -18,4 +19,5 @@ import dagger.Component;
 public interface RecommendComponent {
 
     void inject(RecommendFragment fragment);
+
 }

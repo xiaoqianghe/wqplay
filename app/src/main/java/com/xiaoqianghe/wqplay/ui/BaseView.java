@@ -13,7 +13,7 @@ public interface BaseView {
 
     void showLoading();
     void dismissLoading();
-    //void showError(String str);
+    void showError(String str);
 
 
 

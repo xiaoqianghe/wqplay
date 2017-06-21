@@ -1,9 +1,12 @@
 package com.xiaoqianghe.wqplay.presenter;
 
+import android.Manifest;
+import android.app.Activity;
 import android.support.annotation.MainThread;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.tbruyelle.rxpermissions.RxPermissions;
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.bean.requestbean.BaseBean;
 import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
@@ -19,9 +22,11 @@ import javax.inject.Inject;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import rx.Observable;
 import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -137,22 +142,76 @@ public class RecommendPresenter extends BasePresenter<RecommedModel,RecommendCon
 
 
         //ProgressDialogSubcriber
-        mModel.getApps()
-                .compose(RxHttpResponseCompat.<PageBean<AppInfo>>compatResult())
-                .subscribe(new ProgressDialogSubscriber<PageBean<AppInfo>>(mContext) {
+//        mModel.getApps()
+//                .compose(RxHttpResponseCompat.<PageBean<AppInfo>>compatResult())
+//                .subscribe(new ProgressDialogSubscriber<PageBean<AppInfo>>(mContext) {
+//                    @Override
+//                    public void onNext(PageBean<AppInfo> appInfoPageBean) {
+//                        super.onNext(appInfoPageBean);
+//                        if(null!=appInfoPageBean){
+//                            mView.showResult(appInfoPageBean.getDatas());
+//                        }else{
+//                            mView.showNodata();
+//                        }
+//                    }
+//                });
+
+
+           //     mView.showLoading();
+
+/**********************************ProgressDialogFragment ***********************************************/
+
+//        mModel.getApps()
+//                .compose(RxHttpResponseCompat.<PageBean<AppInfo>>compatResult())
+//                .subscribe(new Subscriber<PageBean<AppInfo>>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        mView.dismissLoading();
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        mView.dismissLoading();
+//                        mView.showError("数据异常");
+//                    }
+//
+//                    @Override
+//                    public void onNext(PageBean<AppInfo> appInfoPageBean) {
+//                        Log.d(TAG,"===========:"+new Gson().toJson(appInfoPageBean));
+//                        if(null!=appInfoPageBean){
+//                            mView.showResult(appInfoPageBean.getDatas());
+//                        }else{
+//                            mView.showNodata();
+//                        }
+//                    }
+//                });
+
+/**********************************RxPermissions 的使用 ***********************************************/
+
+        RxPermissions rxPermissions = new RxPermissions((Activity) mContext);
+        rxPermissions.request(Manifest.permission.READ_PHONE_STATE)
+                .flatMap(new Func1<Boolean, Observable<PageBean<AppInfo>>>() {
                     @Override
-                    public void onNext(PageBean<AppInfo> appInfoPageBean) {
-                        super.onNext(appInfoPageBean);
-                        if(null!=appInfoPageBean){
-                            mView.showResult(appInfoPageBean.getDatas());
-                        }else{
-                            mView.showNodata();
+                    public Observable<PageBean<AppInfo>>call(Boolean aBoolean) {
+                        if(aBoolean){
+                            //return  mModel.getApps().compose(RxHttpReponseCompat.<PageBean<AppInfo>>compatResult());
+                            return mModel.getApps().compose(RxHttpResponseCompat.<PageBean<AppInfo>>compatResult());
+                        }
+                        else{
+                            return Observable.empty();
                         }
                     }
+                })
+                .subscribe(new ProgressDialogSubscriber<PageBean<AppInfo>>(mContext,mView){
+                    @Override
+                    public void onNext(PageBean<AppInfo> appInfoPageBean) {
+                        //super.onNext(appInfoPageBean);
+                       // mView.showResult(appInfoPageBean.getDatas());
+
+                        mView.showError("自定义的哈哈数据异常");
+                    }
                 });
-
-
-        //
 
     }
 }

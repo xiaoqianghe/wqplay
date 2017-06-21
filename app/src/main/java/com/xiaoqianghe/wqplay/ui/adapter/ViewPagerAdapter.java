@@ -10,6 +10,7 @@ import com.xiaoqianghe.wqplay.ui.Fragment.GamesFragment;
 import com.xiaoqianghe.wqplay.ui.Fragment.GuiderFragment;
 import com.xiaoqianghe.wqplay.ui.Fragment.RankingFragment;
 import com.xiaoqianghe.wqplay.ui.Fragment.RecommendFragment;
+import com.xiaoqianghe.wqplay.ui.Fragment.RecommendProFragment;
 import com.xiaoqianghe.wqplay.ui.bean.FragmentInfo;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
 
     private void initFragmentList() {
         mFragmentList.add(new FragmentInfo("篮球",RecommendFragment.class));
+//        mFragmentList.add(new FragmentInfo("篮球Pro",RecommendProFragment.class));
         mFragmentList.add(new FragmentInfo("足球",RankingFragment.class));
         mFragmentList.add(new FragmentInfo("乒乓球",GamesFragment.class));
         mFragmentList.add(new FragmentInfo("羽毛球",CategoryFragment.class));

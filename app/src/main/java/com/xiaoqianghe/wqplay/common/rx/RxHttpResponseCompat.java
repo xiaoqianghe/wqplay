@@ -27,7 +27,6 @@ public class RxHttpResponseCompat {
                     @Override
                     public Observable<T> call(final BaseBean<T> tBaseBean) {
                         if(tBaseBean.SUCCESS()){
-
                             return Observable.create(new Observable.OnSubscribe<T>() {
                                 @Override
                                 public void call(Subscriber<? super T> subscriber) {

@@ -1,25 +1,19 @@
 package com.xiaoqianghe.wqplay.ui.Fragment;
 
 import android.app.ProgressDialog;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.xiaoqianghe.wqplay.R;
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
-import com.xiaoqianghe.wqplay.di.component.DaggerRecommendComponent;
-import com.xiaoqianghe.wqplay.di.module.RecommendModule;
+
 import com.xiaoqianghe.wqplay.presenter.RecommendPresenter;
 import com.xiaoqianghe.wqplay.presenter.contract.RecommendContract;
-import com.xiaoqianghe.wqplay.ui.BaseView;
 import com.xiaoqianghe.wqplay.ui.adapter.RecomendAppAdapter;
 import com.xiaoqianghe.wqplay.ui.decoration.DividerItemDecoration;
 
@@ -28,8 +22,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Author：Wq
@@ -37,7 +29,7 @@ import butterknife.Unbinder;
  * Description：//todo
  */
 
-public class RecommendFragment extends ProgressDialogFragment<RecommendPresenter> implements RecommendContract.View {
+public class RecommendProFragment extends ProgressDialogFragment<RecommendPresenter> implements RecommendContract.View {
     private final String TAG = this.getClass().getSimpleName();
     @BindView(R.id.recycle_view)
     RecyclerView mRecyclerView;
@@ -65,30 +57,30 @@ public class RecommendFragment extends ProgressDialogFragment<RecommendPresenter
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
-        DaggerRecommendComponent.builder().appComponent(appComponent)
-        .recommendModule(new RecommendModule(this)).build().inject(this);
+//        DaggerRecommendComponent.builder().appComponent(appComponent)
+//        .recommendModule(new RecommendModule(this)).build().inject(this);
     }
-//
-//    @Override
-//    public void showLoading() {
-//        mProgressDialog.show();
-//
-//    }
-//
-//    @Override
-//    public void dismissLoading() {
-//        if (mProgressDialog.isShowing()) {
-//            mProgressDialog.dismiss();
-//        }
-//
-//    }
-//
-//    @Override
-//    public void showError(String str) {
-//        Log.d(TAG,"======showError");
-//        Toast.makeText(getActivity(), "服务器开小差了：" + str, Toast.LENGTH_LONG).show();
-//
-//    }
+
+    @Override
+    public void showLoading() {
+        mProgressDialog.show();
+
+    }
+
+    @Override
+    public void dismissLoading() {
+        if (mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+
+    }
+
+    @Override
+    public void showError(String str) {
+        Log.d(TAG,"======showError");
+        Toast.makeText(getActivity(), "服务器开小差了：" + str, Toast.LENGTH_LONG).show();
+
+    }
 
     @Override
     public void showNodata() {

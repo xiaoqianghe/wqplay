@@ -1,6 +1,11 @@
 package com.xiaoqianghe.wqplay.di.module;
 
+import android.app.Application;
+
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.xiaoqianghe.wqplay.BuildConfig;
+import com.xiaoqianghe.wqplay.common.http.CommonParamsInterceptor;
 import com.xiaoqianghe.wqplay.http.ApiService;
 
 import java.util.concurrent.TimeUnit;
@@ -25,31 +30,26 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HttpModule {
 
 
-
-
+//
+//
     @Provides
     @Singleton
     public OkHttpClient provideOkHttpClient(){
-
-        HttpLoggingInterceptor logging=new HttpLoggingInterceptor();
-
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-
-        return new OkHttpClient.Builder()
-                // HeadInterceptor实现了Interceptor，用来往Request Header添加一些业务相关数据，如APP版本，token信息
-//                .addInterceptor(new HeadInterceptor())
-                .addInterceptor(logging)
-                // 连接超时时间设置
+        OkHttpClient.Builder builder=new OkHttpClient.Builder();
+        if(BuildConfig.DEBUG){
+            HttpLoggingInterceptor logging=new HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+            builder.addInterceptor(logging);
+        }
+        return builder
+               // .addInterceptor(new CommonParamsInterceptor(application,gson))
                 .connectTimeout(10, TimeUnit.SECONDS)
                 // 读取超时时间设置
                 .readTimeout(10, TimeUnit.SECONDS)
-
                 .build();
-
-
-
     }
+
+
 
     @Singleton
     @Provides
