@@ -206,10 +206,8 @@ public class RecommendPresenter extends BasePresenter<RecommedModel,RecommendCon
                 .subscribe(new ProgressDialogSubscriber<PageBean<AppInfo>>(mContext,mView){
                     @Override
                     public void onNext(PageBean<AppInfo> appInfoPageBean) {
-                        //super.onNext(appInfoPageBean);
-                       // mView.showResult(appInfoPageBean.getDatas());
-
-                        mView.showError("自定义的哈哈数据异常");
+                       // super.onNext(appInfoPageBean);
+                        mView.showResult(appInfoPageBean.getDatas());
                     }
                 });
 

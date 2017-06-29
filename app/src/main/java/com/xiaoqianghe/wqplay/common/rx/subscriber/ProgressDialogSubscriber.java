@@ -14,7 +14,7 @@ import com.xiaoqianghe.wqplay.ui.BaseView;
  * Description：//todo
  */
 
-public class ProgressDialogSubscriber<T> extends ErrHandlerSubscriber<T> {
+public abstract class ProgressDialogSubscriber<T> extends ErrHandlerSubscriber<T> {
 
     private ProgressDialogHandler mProgressDialogHandler;
 
@@ -58,7 +58,6 @@ public class ProgressDialogSubscriber<T> extends ErrHandlerSubscriber<T> {
     @Override
     public void onError(Throwable e) {
         super.onError(e);
-
 //        if(isShowProgressDialog()){
 //            this.mProgressDialogHandler.dismissProgressDialog();
 //        }
@@ -68,10 +67,7 @@ public class ProgressDialogSubscriber<T> extends ErrHandlerSubscriber<T> {
 
     }
 
-    @Override
-    public void onNext(T t) {
 
-    }
 
 //    @Override
 //    public void onNext(T t) {

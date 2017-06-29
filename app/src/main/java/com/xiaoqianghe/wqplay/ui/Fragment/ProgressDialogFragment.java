@@ -135,7 +135,10 @@ public abstract class ProgressDialogFragment<T extends BasePresenter>extends Fra
     public void showEmptyView(String msg){
         Log.d(TAG,"======showEmptyView::"+msg);
         showEmptyView();
-        mTextError.setText(msg);
+        if(null!=msg){
+            mTextError.setText(msg);
+        }
+
     }
 
 
@@ -145,14 +148,14 @@ public abstract class ProgressDialogFragment<T extends BasePresenter>extends Fra
         for(int i=0;i<mRootView.getChildCount();i++){
             if( mRootView.getChildAt(i).getId() == viewId){
                 mRootView.getChildAt(i).setVisibility(View.VISIBLE);
-                if(mRootView.getChildAt(i).getId()==R.id.view_empty){
-                    Log.d(TAG,"======哈哈哈mRootView.getChildAt(i)==emptyView");
-                    if(mRootView.getChildAt(i).getVisibility()==View.VISIBLE){
-                        Log.d(TAG,"======mRootView.getChildAt(i).getVisibility()  showEmptyView::emptyView显示");
-                        mTextError.setVisibility(View.VISIBLE);
-                        mTextError.setText("数据异常啦啦啦");
-                    }
-                }
+//                if(mRootView.getChildAt(i).getId()==R.id.view_empty){
+//                    Log.d(TAG,"======哈哈哈mRootView.getChildAt(i)==emptyView");
+//                    if(mRootView.getChildAt(i).getVisibility()==View.VISIBLE){
+//                        Log.d(TAG,"======mRootView.getChildAt(i).getVisibility()  showEmptyView::emptyView显示");
+//                        mTextError.setVisibility(View.VISIBLE);
+//                        mTextError.setText("数据异常啦啦啦");
+//                    }
+//                }
             }
             else {
                 mRootView.getChildAt(i).setVisibility(View.GONE);
