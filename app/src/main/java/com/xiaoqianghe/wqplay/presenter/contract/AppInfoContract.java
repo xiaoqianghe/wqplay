@@ -1,5 +1,7 @@
 package com.xiaoqianghe.wqplay.presenter.contract;
 
+import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
+import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
 import com.xiaoqianghe.wqplay.ui.BaseView;
 
 /**
@@ -16,7 +18,7 @@ public interface AppInfoContract {
 
     interface AppInfoView extends BaseView{
 
-        void showResultData();
+        void showResultData(PageBean<AppInfo> page);
 
         void onLoadMoreComplete();
 

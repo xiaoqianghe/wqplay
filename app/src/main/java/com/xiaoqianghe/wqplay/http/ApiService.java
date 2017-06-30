@@ -2,6 +2,7 @@ package com.xiaoqianghe.wqplay.http;
 
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.bean.requestbean.BaseBean;
+import com.xiaoqianghe.wqplay.bean.requestbean.IndexBean;
 import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
 
 import retrofit2.Call;
@@ -28,6 +29,15 @@ public interface ApiService {
 
     @GET("featured2")
     public Observable<BaseBean<PageBean<AppInfo>>> getApps(@Query("p") String jsonParam);
+
+    @GET("toplist")
+    public  Observable<BaseBean<PageBean<AppInfo>>> topList(@Query("page") int page);
+
+    @GET("game")
+    public  Observable<BaseBean<PageBean<AppInfo>>> games(@Query("page") int page);
+
+    @GET("index")
+    public  Observable<BaseBean<IndexBean>> index();
 
 
 }

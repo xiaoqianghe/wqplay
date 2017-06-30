@@ -1,9 +1,13 @@
 package com.xiaoqianghe.wqplay.data;
 
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
+import com.xiaoqianghe.wqplay.bean.requestbean.BaseBean;
+import com.xiaoqianghe.wqplay.bean.requestbean.IndexBean;
+import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
 import com.xiaoqianghe.wqplay.http.ApiService;
 
 import retrofit2.Callback;
+import rx.Observable;
 
 /**
  * @包名: com.xiaoqianghe.wqplay.data
@@ -32,4 +36,39 @@ public class AppInfoModel {
        // mApiService.getAppInfo().enqueue(callback);
 
     }
+
+
+    
+    /**
+     * @// TODO: 2017/6/29  indexBean  
+     * 
+     * */
+    public Observable<BaseBean<IndexBean>> index(){
+
+        return  mApiService.index();
+    }
+
+
+    /**
+     * 
+     * @// TODO: 2017/6/29  顶部列表 
+     * 
+     * */
+    public Observable<BaseBean<PageBean<AppInfo>>> topList(int page){
+
+        return  mApiService.topList(page);
+    }
+
+
+
+    /**
+     * 
+     * @// TODO: 2017/6/29 游戏列表数据 
+     * 
+     * */
+    public  Observable<BaseBean<PageBean<AppInfo>>> games(int page){
+
+        return  mApiService.games(page);
+    }
+
 }
