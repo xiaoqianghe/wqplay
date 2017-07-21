@@ -15,6 +15,8 @@ import com.google.gson.Gson;
 import com.xiaoqianghe.wqplay.R;
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
+
+
 import com.xiaoqianghe.wqplay.di.component.DaggerRecommendComponent;
 import com.xiaoqianghe.wqplay.di.module.RecommendModule;
 import com.xiaoqianghe.wqplay.presenter.RecommendPresenter;
@@ -65,8 +67,11 @@ public class RecommendFragment extends ProgressDialogFragment<RecommendPresenter
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
-        DaggerRecommendComponent.builder().appComponent(appComponent)
-        .recommendModule(new RecommendModule(this)).build().inject(this);
+       // DaggerRecommendComponent.builder().appComponent(appComponent).recommendModule(new RecommendModule(this)).build().inject(this);
+       // DaggerRecommendComponent.builder().appComponent(appComponent).recommendModule(new RecommendModule(this)).build().inject(this);
+
+       // DaggerRecommendComponent.builder().appComponent(appComponent).recommendModule(new RecommendModule(this)).build().inject(this);
+
     }
 //
 //    @Override

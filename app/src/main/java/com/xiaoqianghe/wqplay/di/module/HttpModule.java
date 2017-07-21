@@ -5,6 +5,7 @@ import android.app.Application;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.xiaoqianghe.wqplay.BuildConfig;
+
 import com.xiaoqianghe.wqplay.common.http.CommonParamsInterceptor;
 import com.xiaoqianghe.wqplay.http.ApiService;
 
@@ -35,6 +36,7 @@ public class HttpModule {
     @Provides
     @Singleton
     public OkHttpClient provideOkHttpClient(){
+        //Application application, Gson gson
         OkHttpClient.Builder builder=new OkHttpClient.Builder();
         if(BuildConfig.DEBUG){
             HttpLoggingInterceptor logging=new HttpLoggingInterceptor();
@@ -42,7 +44,7 @@ public class HttpModule {
             builder.addInterceptor(logging);
         }
         return builder
-               // .addInterceptor(new CommonParamsInterceptor(application,gson))
+//                .addInterceptor(new CommonParamsInterceptor(application,gson))
                 .connectTimeout(10, TimeUnit.SECONDS)
                 // 读取超时时间设置
                 .readTimeout(10, TimeUnit.SECONDS)

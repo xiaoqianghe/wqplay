@@ -1,6 +1,9 @@
 package com.xiaoqianghe.wqplay.ui.Fragment;
 
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
+
+
+import com.xiaoqianghe.wqplay.di.component.DaggerAppInfoComponent;
 import com.xiaoqianghe.wqplay.di.module.AppInfoModule;
 import com.xiaoqianghe.wqplay.presenter.AppInfoPresenter;
 import com.xiaoqianghe.wqplay.ui.adapter.AppInfoAdapter;
@@ -24,13 +27,10 @@ public class TopListFragment extends BaseAppInfoFragment {
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
-//        super.setupActivityComponent(appComponent);
+    //DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this)).build().inject(this);
+     //   DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this)).build().inject(this);
 
-//        DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this))
-//                .build().injectTopListFragment(this);
-
-
-
+      //  DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this)).build().inject(this);
 
     }
 }

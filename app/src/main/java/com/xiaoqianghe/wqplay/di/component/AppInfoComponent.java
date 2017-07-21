@@ -16,5 +16,6 @@ import dagger.Component;
 public interface AppInfoComponent {
 
 
-    void injectTopListFragment(TopListFragment mTopListFragment);
+    void inject(TopListFragment fragment);
+
 }

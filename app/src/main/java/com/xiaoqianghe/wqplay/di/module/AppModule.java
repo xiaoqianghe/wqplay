@@ -1,5 +1,7 @@
 package com.xiaoqianghe.wqplay.di.module;
 
+import android.app.Application;
+
 import com.google.gson.Gson;
 import com.xiaoqianghe.wqplay.AppApplication;
 
@@ -16,17 +18,17 @@ import dagger.Provides;
 @Module
 public class AppModule {
 
-    private AppApplication mAppApplication;
+    private Application mApplication;
 
     public AppModule(AppApplication mAppApplication) {
-        this.mAppApplication = mAppApplication;
+        this.mApplication = mApplication;
     }
 
     @Singleton
     @Provides
-    public AppApplication provideApplication(){
+    public Application provideApplication(){
 
-        return mAppApplication;
+        return mApplication;
     }
 
     @Singleton

@@ -23,8 +23,7 @@ public interface AppComponent {
 
 
     public ApiService getApiService();
-
-   public AppApplication getApplication();
+    public Application getApplication();
 //
 //    public RxErrHandler getRxErrHandler();
 
