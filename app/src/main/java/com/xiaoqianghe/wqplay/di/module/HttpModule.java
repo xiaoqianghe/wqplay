@@ -33,9 +33,9 @@ public class HttpModule {
 
 //
 //
-    @Provides
-    @Singleton
-    public OkHttpClient provideOkHttpClient(){
+   @Provides
+   @Singleton
+    public OkHttpClient provideOkHttpClient(Application application, Gson gson){
         //Application application, Gson gson
         OkHttpClient.Builder builder=new OkHttpClient.Builder();
         if(BuildConfig.DEBUG){
@@ -43,8 +43,8 @@ public class HttpModule {
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
             builder.addInterceptor(logging);
         }
-        return builder
-//                .addInterceptor(new CommonParamsInterceptor(application,gson))
+       return builder
+                .addInterceptor(new CommonParamsInterceptor(application,gson))
                 .connectTimeout(10, TimeUnit.SECONDS)
                 // 读取超时时间设置
                 .readTimeout(10, TimeUnit.SECONDS)
@@ -52,9 +52,8 @@ public class HttpModule {
     }
 
 
-
-    @Singleton
     @Provides
+    @Singleton
     public Retrofit provideRetrofit(OkHttpClient okHttpClient){
 
         Retrofit.Builder builder=new Retrofit.Builder()

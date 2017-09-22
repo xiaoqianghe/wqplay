@@ -8,6 +8,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xiaoqianghe.wqplay.R;
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
+import com.xiaoqianghe.wqplay.common.imageloader.ImageLoader;
 
 
 import java.util.List;
@@ -41,7 +42,7 @@ public class AppInfoAdapter extends BaseQuickAdapter<AppInfo,BaseViewHolder> {
     @Override
     protected void convert(BaseViewHolder helper, AppInfo item) {
 
-//        ImageLoader.load(baseImgUrl+item.getIcon(), (ImageView) helper.getView(R.id.img_app_icon));
+        ImageLoader.load(baseImgUrl+item.getIcon(), (ImageView) helper.getView(R.id.img_app_icon));
 
         helper.setText(R.id.txt_app_name,item.getDisplayName())
                 .setText(R.id.txt_brief,item.getBriefShow());
@@ -72,6 +73,8 @@ public class AppInfoAdapter extends BaseQuickAdapter<AppInfo,BaseViewHolder> {
         private boolean isShowCategoryName;
         private boolean isShowBrief;
 
+        private int layoutId=R.layout.template_appinfo;
+
 
 
 
@@ -101,6 +104,12 @@ public class AppInfoAdapter extends BaseQuickAdapter<AppInfo,BaseViewHolder> {
 
 
             return  new AppInfoAdapter(this);
+        }
+
+
+        public Builder layout(int resId){
+            this.layoutId = resId;
+            return this;
         }
 
 

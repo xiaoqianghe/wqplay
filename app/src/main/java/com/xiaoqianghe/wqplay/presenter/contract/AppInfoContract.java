@@ -1,6 +1,7 @@
 package com.xiaoqianghe.wqplay.presenter.contract;
 
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
+import com.xiaoqianghe.wqplay.bean.requestbean.IndexBean;
 import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
 import com.xiaoqianghe.wqplay.ui.BaseView;
 
@@ -16,11 +17,35 @@ public interface AppInfoContract {
 
 
 
+    interface View extends BaseView{
+
+
+
+
+
+        void  showResult(IndexBean indexBean);
+
+
+        void onRequestPermissonSuccess();
+        void onRequestPermissonError();
+
+
+
+    }
+
+
+
     interface AppInfoView extends BaseView{
 
         void showResultData(PageBean<AppInfo> page);
 
         void onLoadMoreComplete();
+
+    }
+
+    interface  AppDetailView extends BaseView{
+
+        void showAppDetail(AppInfo appInfo);
 
     }
 

@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.xiaoqianghe.wqplay.R;
+import com.xiaoqianghe.wqplay.di.component.AppComponent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +42,11 @@ public class AppInfoActivity extends BaseActivity {
     @Override
     protected int setLayout() {
         return R.layout.activity_appinfo;
+    }
+
+    @Override
+    public void setupAcitivtyComponent(AppComponent appComponent) {
+
     }
 
     @Override

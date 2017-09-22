@@ -1,6 +1,9 @@
 package com.xiaoqianghe.wqplay.common.rx;
 
 
+import android.util.Log;
+
+import com.google.gson.Gson;
 import com.xiaoqianghe.wqplay.bean.requestbean.BaseBean;
 import com.xiaoqianghe.wqplay.common.exception.ApiException;
 
@@ -18,6 +21,8 @@ import rx.schedulers.Schedulers;
 
 public class RxHttpResponseCompat {
 
+    private final String TAG = this.getClass().getSimpleName();
+
     public static <T> Observable.Transformer<BaseBean<T>,T>  compatResult(){
 
         return new Observable.Transformer<BaseBean<T>, T>() {
@@ -26,6 +31,8 @@ public class RxHttpResponseCompat {
                 return baseBeanObservable.flatMap(new Func1<BaseBean<T>, Observable<T>>() {
                     @Override
                     public Observable<T> call(final BaseBean<T> tBaseBean) {
+
+                        Log.d("RxHttpResponseCompat","======tBaseBean::"+new Gson().toJson(tBaseBean));
                         if(tBaseBean.SUCCESS()){
                             return Observable.create(new Observable.OnSubscribe<T>() {
                                 @Override
@@ -36,7 +43,10 @@ public class RxHttpResponseCompat {
                             });
 
                         }else{
-                            return Observable.error(new ApiException(tBaseBean.getStatus(),tBaseBean.getMessage()));
+                            //{"status":10010,"message":"token 丢失"}
+                            ApiException mApiException=new ApiException(tBaseBean.getStatus(),tBaseBean.getMessage());
+                            Log.d("RxHttpResponseCompat","======mApiException::"+new Gson().toJson(mApiException));
+                            return Observable.error(mApiException);
                         }
 
                     }

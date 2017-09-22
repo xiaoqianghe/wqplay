@@ -2,9 +2,9 @@ package com.xiaoqianghe.wqplay;
 
 import android.app.Application;
 import android.content.Context;
+import android.view.View;
 
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
-
 import com.xiaoqianghe.wqplay.di.component.DaggerAppComponent;
 import com.xiaoqianghe.wqplay.di.module.AppModule;
 import com.xiaoqianghe.wqplay.di.module.HttpModule;
@@ -21,12 +21,13 @@ public class AppApplication extends Application {
 
     private AppComponent mAppComponent;
 
+    private View mView;
+
     @Override
     public void onCreate() {
         super.onCreate();
-       // mAppComponent=DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
-       // mAppComponent=DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
-       // mAppComponent=DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
+//        mAppComponent= DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
+        mAppComponent= DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
 
     }
 
@@ -40,5 +41,15 @@ public class AppApplication extends Application {
     public AppComponent getAppComponent(){
 
         return mAppComponent;
+    }
+
+
+
+    public View getView() {
+        return mView;
+    }
+
+    public void setView(View view) {
+        mView = view;
     }
 }

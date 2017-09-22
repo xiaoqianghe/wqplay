@@ -2,9 +2,11 @@ package com.xiaoqianghe.wqplay.di.module;
 
 import android.app.ProgressDialog;
 
+import com.xiaoqianghe.wqplay.data.AppInfoModel;
 import com.xiaoqianghe.wqplay.data.RecommedModel;
 import com.xiaoqianghe.wqplay.http.ApiService;
 import com.xiaoqianghe.wqplay.presenter.RecommendPresenter;
+import com.xiaoqianghe.wqplay.presenter.contract.AppInfoContract;
 import com.xiaoqianghe.wqplay.presenter.contract.RecommendContract;
 import com.xiaoqianghe.wqplay.ui.Fragment.RecommendFragment;
 
@@ -19,9 +21,9 @@ import dagger.Provides;
 @Module
 public class RecommendModule {
 
-    private RecommendContract.View view;
+    private AppInfoContract.View view;
 
-    public RecommendModule(RecommendContract.View view) {
+    public RecommendModule(AppInfoContract.View view) {
         this.view = view;
     }
 
@@ -31,7 +33,7 @@ public class RecommendModule {
 //    }
 
     @Provides
-    public RecommendContract.View provideView(){
+    public AppInfoContract.View provideView(){
         return view;
     }
 
@@ -41,8 +43,15 @@ public class RecommendModule {
             return new RecommedModel(mApiService);
     }
     @Provides
-    public ProgressDialog provideProghressDialog(RecommendContract.View view){
+    public ProgressDialog provideProghressDialog(AppInfoContract.View view){
 
         return new ProgressDialog(((RecommendFragment)view).getActivity());
+    }
+
+
+    @Provides
+    public AppInfoModel privodeModel(ApiService apiService){
+
+        return  new AppInfoModel(apiService);
     }
 }

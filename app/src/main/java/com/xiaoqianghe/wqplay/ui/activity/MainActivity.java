@@ -1,5 +1,6 @@
 package com.xiaoqianghe.wqplay.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -11,9 +12,17 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.ionicons_typeface_library.Ionicons;
 import com.xiaoqianghe.wqplay.R;
+import com.xiaoqianghe.wqplay.common.Constant;
+import com.xiaoqianghe.wqplay.common.font.WqplayFont;
+import com.xiaoqianghe.wqplay.common.util.ACache;
+import com.xiaoqianghe.wqplay.di.component.AppComponent;
 import com.xiaoqianghe.wqplay.ui.adapter.ViewPagerAdapter;
 
 import butterknife.BindView;
@@ -39,6 +48,12 @@ public class MainActivity extends BaseActivity {
 
     private View headerView;
 
+
+
+
+    private ImageView mUserHeadView;
+    private TextView mTextUserName;
+
     @Override
     protected void init() {
         viewPager = (ViewPager) findViewById(R.id.view_pager);
@@ -60,6 +75,11 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    public void setupAcitivtyComponent(AppComponent appComponent) {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
@@ -71,6 +91,29 @@ public class MainActivity extends BaseActivity {
 
 
         headerView = navigationView.getHeaderView(0);
+
+
+        mUserHeadView = (ImageView) headerView.findViewById(R.id.img_avatar);
+
+
+        mUserHeadView.setImageDrawable(new IconicsDrawable(this, WqplayFont.Icon.cniao_head).colorRes(R.color.white));
+
+        mTextUserName = (TextView) headerView.findViewById(R.id.txt_username);
+
+
+
+
+        navigationView.getMenu().findItem(R.id.menu_app_update).setIcon(new IconicsDrawable(this, Ionicons.Icon.ion_ios_loop));
+        navigationView.getMenu().findItem(R.id.menu_download_manager).setIcon(new IconicsDrawable(this, WqplayFont.Icon.cniao_download));
+        navigationView.getMenu().findItem(R.id.menu_app_uninstall).setIcon(new IconicsDrawable(this, Ionicons.Icon.ion_ios_trash_outline));
+        navigationView.getMenu().findItem(R.id.menu_setting).setIcon(new IconicsDrawable(this, Ionicons.Icon.ion_ios_gear_outline));
+        navigationView.getMenu().findItem(R.id.menu_logout).setIcon(new IconicsDrawable(this, WqplayFont.Icon.cniao_shutdown));
+
+
+
+
+
+
 
         headerView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,11 +138,18 @@ public class MainActivity extends BaseActivity {
                         break;
 
 
-                    case R.id.menu_message:
+//                    case R.id.menu_message:
+//
+//                        Toast.makeText(MainActivity.this, "点击了消息", Toast.LENGTH_LONG).show();
+//
+//                        break;
 
-                        Toast.makeText(MainActivity.this, "点击了消息", Toast.LENGTH_LONG).show();
+                    case R.id.menu_logout:
+
+                        logout();
 
                         break;
+
                 }
 
 
@@ -118,4 +168,28 @@ public class MainActivity extends BaseActivity {
 
 
     }
+
+
+    private void logout() {
+
+        ACache aCache = ACache.get(this);
+
+        aCache.put(Constant.TOKEN,"");
+        aCache.put(Constant.USER,"");
+
+        mUserHeadView.setImageDrawable(new IconicsDrawable(this, WqplayFont.Icon.cniao_head).colorRes(R.color.white));
+        mTextUserName.setText("未登录");
+
+        headerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            }
+        });
+
+        Toast.makeText(MainActivity.this,"您已退出登录",Toast.LENGTH_LONG).show();
+    }
+
+
+
 }

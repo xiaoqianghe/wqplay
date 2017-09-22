@@ -89,7 +89,7 @@ public class CommonParamsInterceptor implements Interceptor {
 
             int index= url.indexOf("?");
             if(index>0){
-                url.substring(0,index);
+                url =url.substring(0,index);
             }
             url=url+"?"+Constant.PARAM+"="+newJsonParams;
 

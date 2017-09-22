@@ -5,6 +5,7 @@ import com.xiaoqianghe.wqplay.bean.requestbean.BaseBean;
 import com.xiaoqianghe.wqplay.bean.requestbean.IndexBean;
 import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
 import com.xiaoqianghe.wqplay.http.ApiService;
+import com.xiaoqianghe.wqplay.ui.activity.BaseActivity;
 
 import retrofit2.Callback;
 import rx.Observable;
@@ -70,5 +71,29 @@ public class AppInfoModel {
 
         return  mApiService.games(page);
     }
+
+
+
+    public Observable<BaseBean<PageBean<AppInfo>>> getFeaturedAppsByCategory(int categoryid,int page){
+        return  mApiService.getFeaturedAppsByCategory(categoryid,page);
+    }
+
+
+
+    public Observable<BaseBean<PageBean<AppInfo>>> getTopListAppsByCategory( int categoryid, int page){
+
+        return  mApiService.getTopListAppsByCategory(categoryid,page);
+    }
+
+    public Observable<BaseBean<PageBean<AppInfo>>> getNewListAppsByCategory( int categoryid, int page){
+
+        return  mApiService.getNewListAppsByCategory(categoryid,page);
+    }
+
+    public Observable<BaseBean<AppInfo>> getAppDetail( int id){
+
+        return  mApiService.getAppDetail(id);
+    }
+
 
 }

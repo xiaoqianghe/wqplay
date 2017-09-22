@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.google.gson.JsonParseException;
 import com.xiaoqianghe.wqplay.common.exception.ApiException;
 import com.xiaoqianghe.wqplay.common.exception.BaseException;
+import com.xiaoqianghe.wqplay.common.exception.ErrorMessageFactory;
 
 import org.json.JSONException;
 
@@ -47,8 +48,12 @@ public class RxErrHandler {
         else if(e instanceof SocketException){
 
         }else {
+            exception.setCode(BaseException.UNKNOWN_ERROR);
 
         }
+
+        exception.setDisplayMessage(ErrorMessageFactory.create(mContext,exception.getCode()));
+
 
         return exception;
 

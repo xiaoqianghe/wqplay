@@ -18,7 +18,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -77,5 +77,24 @@ dependencies {
     compile 'jp.wasabeef:glide-transformations:2.0.1'
 
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.8.0'
+
+    compile 'com.jakewharton.rxbinding:rxbinding:1.0.1'
+
+    compile 'com.hwangjr.rxbus:rxbus:1.0.5'
+
+
+    // icon
+    compile 'com.mikepenz:iconics-core:2.8.1@aar'
+    compile 'com.mikepenz:ionicons-typeface:2.0.1.2@aar'
+
+
+    compile 'com.ms-square:expandableTextView:0.1.4'
+
+    compile 'com.zoonref:simple-view-behavior:1.0'
+
+
+
+
+
 
 }

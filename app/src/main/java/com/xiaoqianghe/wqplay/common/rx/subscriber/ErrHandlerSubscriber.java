@@ -27,7 +27,7 @@ public abstract class ErrHandlerSubscriber<T> extends DefualtSubscriber<T>{
     @Override
     public void onError(Throwable e) {
         BaseException baseException=mErrorHandler.handleError(e);
-        if(null!=baseException){
+        if(null==baseException){
             e.printStackTrace();
             Log.d("ErrorHandlerSubscriber",e.getMessage());
 

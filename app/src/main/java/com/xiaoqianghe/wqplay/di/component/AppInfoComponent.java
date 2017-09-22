@@ -2,6 +2,7 @@ package com.xiaoqianghe.wqplay.di.component;
 
 import com.xiaoqianghe.wqplay.di.FragmentScope;
 import com.xiaoqianghe.wqplay.di.module.AppInfoModule;
+import com.xiaoqianghe.wqplay.ui.Fragment.GamesFragment;
 import com.xiaoqianghe.wqplay.ui.Fragment.TopListFragment;
 
 import dagger.Component;
@@ -17,5 +18,6 @@ public interface AppInfoComponent {
 
 
     void inject(TopListFragment fragment);
+    void injectGamesFragment(GamesFragment fragment);
 
 }

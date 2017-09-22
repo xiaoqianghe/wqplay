@@ -9,6 +9,6 @@ package com.xiaoqianghe.wqplay.common.exception;
 public class ApiException extends BaseException {
 
     public ApiException(int code, String displayMessage) {
-        super(code, displayMessage);
+        super(code,displayMessage);
     }
 }

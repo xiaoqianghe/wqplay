@@ -82,10 +82,10 @@ public abstract class BaseAppInfoFragment extends ProgressDialogFragment<AppInfo
         return R.layout.template_recycler_view;
     }
 
-    @Override
-    public void setupActivityComponent(AppComponent appComponent) {
-
-    }
+//    @Override
+//    public void setupActivityComponent(AppComponent appComponent) {
+//
+//    }
 
     @Override
     public void onLoadMoreRequested() {

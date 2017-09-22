@@ -8,6 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xiaoqianghe.wqplay.R;
+import com.xiaoqianghe.wqplay.di.component.AppComponent;
+//import com.xiaoqianghe.wqplay.di.component.DaggerAppInfoComponent;
+import com.xiaoqianghe.wqplay.di.component.DaggerAppInfoComponent;
+import com.xiaoqianghe.wqplay.di.module.AppInfoModule;
+import com.xiaoqianghe.wqplay.presenter.AppInfoPresenter;
+import com.xiaoqianghe.wqplay.ui.adapter.AppInfoAdapter;
 
 /**
  * Author：Wq
@@ -15,13 +21,26 @@ import com.xiaoqianghe.wqplay.R;
  * Description：//todo
  */
 
-public class GamesFragment extends Fragment {
+public class GamesFragment extends BaseAppInfoFragment{
 
-    @Nullable
+
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        return super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_games,container,false);
-        return view;
+    public void setupActivityComponent(AppComponent appComponent) {
+
+//        DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this)).build().injectGamesFragment(this);
+
+        DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this)).build().injectGamesFragment(this);
+
+    }
+
+    @Override
+    AppInfoAdapter buildAdapter() {
+        return AppInfoAdapter.builder().showPosition(false).showBrief(true).showCategoryName(true).build();
+    }
+
+    @Override
+    protected int type() {
+        return AppInfoPresenter.GAME;
     }
 }

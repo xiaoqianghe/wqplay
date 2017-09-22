@@ -20,19 +20,19 @@ public class AppModule {
 
     private Application mApplication;
 
-    public AppModule(AppApplication mAppApplication) {
+    public AppModule(Application mApplication) {
         this.mApplication = mApplication;
     }
 
-    @Singleton
     @Provides
+    @Singleton
     public Application provideApplication(){
 
         return mApplication;
     }
 
-    @Singleton
     @Provides
+    @Singleton
     public Gson provideGson(){
         return new Gson();
     }
