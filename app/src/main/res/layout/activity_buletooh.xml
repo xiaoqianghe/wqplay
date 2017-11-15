@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    android:orientation="vertical"
+    tools:context="com.xiaoqianghe.wqplay.ui.activity.LoginActivity">
+
+
+
+
+
+      <android.support.v7.widget.Toolbar
+          android:id="@+id/tool_bar"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:minHeight="?attr/actionBarSize"
+          android:background="?attr/colorPrimary"
+          android:theme="@style/AppTheme.ToolBar"
+
+          >
+
+
+      </android.support.v7.widget.Toolbar>
+
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@color/color_w"
+
+          android:paddingLeft="15dp"
+          android:paddingRight="15dp"
+
+          android:paddingTop="20dp"
+          android:paddingBottom="50dp"
+          android:orientation="vertical"
+          >
+
+
+
+
+
+            <com.xiaoqianghe.wqplay.ui.widget.LoadingButton
+                android:id="@+id/btn_togetbluetooh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:textColor="@color/color_w"
+                android:background="@drawable/bg_btn"
+                app:loadingText="蓝牙连接"
+                app:text="蓝牙连接1"
+                app:progressColor="@color/colorAccent"/>
+
+
+      </LinearLayout>
+
+      <ListView
+          android:id="@+id/lv"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content">
+
+      </ListView>
+
+
+
+
+
+
+
+
+</LinearLayout>

@@ -87,8 +87,11 @@ public class RecommendFragment extends ProgressDialogFragment<RecommendPresenter
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
-//       DaggerRecommendComponent.builder().appComponent(appComponent).recommendModule(new RecommendModule(this)).build().inject(this);
+////       DaggerRecommendComponent.builder().appComponent(appComponent).recommendModule(new RecommendModule(this)).build().inject(this);
+//        DaggerRecommendComponent.builder().appComponent(appComponent).recommendModule(new RecommendModule(this)).build().inject(this);
+
         DaggerRecommendComponent.builder().appComponent(appComponent).recommendModule(new RecommendModule(this)).build().inject(this);
+
 
 
     }

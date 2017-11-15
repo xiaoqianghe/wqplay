@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.view.View;
 
+
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
 import com.xiaoqianghe.wqplay.di.component.DaggerAppComponent;
 import com.xiaoqianghe.wqplay.di.module.AppModule;
@@ -27,7 +28,13 @@ public class AppApplication extends Application {
     public void onCreate() {
         super.onCreate();
 //        mAppComponent= DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
+//        mAppComponent= DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
+
+//        mAppComponent=DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
+
         mAppComponent= DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
+
+
 
     }
 

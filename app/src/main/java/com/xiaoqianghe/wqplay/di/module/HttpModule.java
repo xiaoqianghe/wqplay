@@ -44,8 +44,9 @@ public class HttpModule {
             builder.addInterceptor(logging);
         }
        return builder
-                .addInterceptor(new CommonParamsInterceptor(application,gson))
-                .connectTimeout(10, TimeUnit.SECONDS)
+//                .addInterceptor(new CommonParamsInterceptor(application,gson))
+               .addInterceptor(new CommonParamsInterceptor(application,gson))
+               .connectTimeout(10, TimeUnit.SECONDS)
                 // 读取超时时间设置
                 .readTimeout(10, TimeUnit.SECONDS)
                 .build();

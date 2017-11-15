@@ -1,5 +1,6 @@
 package com.xiaoqianghe.wqplay.ui.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,17 +17,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.bumptech.glide.Glide;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.ionicons_typeface_library.Ionicons;
 import com.xiaoqianghe.wqplay.R;
+import com.xiaoqianghe.wqplay.bean.requestbean.User;
 import com.xiaoqianghe.wqplay.common.Constant;
 import com.xiaoqianghe.wqplay.common.font.WqplayFont;
+import com.xiaoqianghe.wqplay.common.imageloader.GlideCircleTransform;
+import com.xiaoqianghe.wqplay.common.rx.RxBus;
 import com.xiaoqianghe.wqplay.common.util.ACache;
+import com.xiaoqianghe.wqplay.common.util.PermissionUtil;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
 import com.xiaoqianghe.wqplay.ui.adapter.ViewPagerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.functions.Consumer;
 
 /**
  * Author：Wq
@@ -56,6 +64,33 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
+
+        RxBus.getDefault().toObservable(User.class).subscribe(new Consumer<User>() {
+            @Override
+            public void accept(@io.reactivex.annotations.NonNull User user) throws Exception {
+                initUserHeadView(user);
+            }
+        });
+
+
+        PermissionUtil.requestPermisson(this,Manifest.permission.READ_PHONE_STATE).subscribe(new Consumer<Boolean>() {
+            @Override
+            public void accept(@io.reactivex.annotations.NonNull Boolean aBoolean) throws Exception {
+                if(aBoolean){
+                    initDrawerLayout();
+
+                    initTablayout();
+
+                    initUser();
+                }else{
+
+                }
+            }
+        });
+
+
+
+
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         initDrawerLayout();
         initTablayout();
@@ -188,6 +223,38 @@ public class MainActivity extends BaseActivity {
         });
 
         Toast.makeText(MainActivity.this,"您已退出登录",Toast.LENGTH_LONG).show();
+    }
+
+    private void initUserHeadView(User user){
+
+        Glide.with(this).load(user.getLogo_url()).transform(new GlideCircleTransform(this)).into(mUserHeadView);
+
+        mTextUserName.setText(user.getUsername());
+    }
+
+
+    private void initUser(){
+
+        Object objUser= ACache.get(this).getAsObject(Constant.USER);
+
+        if(objUser ==null){
+
+            headerView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                }
+            });
+
+        }
+        else{
+
+            User user = (User) objUser;
+            initUserHeadView(user);
+
+        }
+
+
     }
 
 

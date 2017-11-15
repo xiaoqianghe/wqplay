@@ -1,8 +1,10 @@
 package com.xiaoqianghe.wqplay.common.http;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.xiaoqianghe.wqplay.common.Constant;
 import com.xiaoqianghe.wqplay.common.util.DensityUtil;
 import com.xiaoqianghe.wqplay.common.util.DeviceUtils;
@@ -29,6 +31,8 @@ import okio.Buffer;
 
 public class CommonParamsInterceptor implements Interceptor {
 
+    private final String TAG = this.getClass().getSimpleName();
+
 
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
@@ -39,6 +43,8 @@ public class CommonParamsInterceptor implements Interceptor {
 
 
     public CommonParamsInterceptor(Context mContext, Gson mGson) {
+
+        Log.d(TAG,"CommonParamsInterceptor 构造函数");
         this.mContext = mContext;
         this.mGson = mGson;
     }
@@ -46,6 +52,10 @@ public class CommonParamsInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request=chain.request();
+
+
+        try {
+
         String method=request.method();
         HashMap<String,Object> commomParamsMap=new HashMap<String,Object>();
         commomParamsMap.put(Constant.IMEI, DeviceUtils.getIMEI(mContext));
@@ -56,6 +66,7 @@ public class CommonParamsInterceptor implements Interceptor {
         commomParamsMap.put(Constant.SDK,DeviceUtils.getBuildVersionSDK());
         commomParamsMap.put(Constant.DENSITY_SCALE_FACTOR,mContext.getResources().getDisplayMetrics().density+"");
 
+        Log.d(TAG,"CommonParamsInterceptor =======intercept");
         if(method.equals("GET")){
 
            HttpUrl httpUrl= request.url();
@@ -93,6 +104,9 @@ public class CommonParamsInterceptor implements Interceptor {
             }
             url=url+"?"+Constant.PARAM+"="+newJsonParams;
 
+
+            Log.d(TAG,"url::"+url);
+
             request=request.newBuilder().url(url).build();
 
         }else if(method.equals("POST")){
@@ -124,6 +138,13 @@ public class CommonParamsInterceptor implements Interceptor {
 
             }
 
+        }
+
+        } catch (JsonSyntaxException e) {
+
+
+            Log.d(TAG,"CommonParamsInterceptor =======JsonSyntaxException e：："+e.toString());
+            e.printStackTrace();
         }
         return chain.proceed(request);
     }
