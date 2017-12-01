@@ -4,7 +4,10 @@ import com.xiaoqianghe.wqplay.bean.requestbean.BaseBean;
 import com.xiaoqianghe.wqplay.bean.requestbean.LoginBean;
 import com.xiaoqianghe.wqplay.ui.BaseView;
 
-import rx.Observable;
+//import rx.Observable;
+
+import io.reactivex.Observable;
+
 
 /**
  * Author：Wq

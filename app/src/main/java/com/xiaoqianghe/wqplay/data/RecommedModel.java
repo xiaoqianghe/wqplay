@@ -6,7 +6,10 @@ import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
 import com.xiaoqianghe.wqplay.http.ApiService;
 
 import retrofit2.Callback;
-import rx.Observable;
+//import rx.Observable;
+
+import io.reactivex.Observable;
+
 
 /**
  * Author：Wq

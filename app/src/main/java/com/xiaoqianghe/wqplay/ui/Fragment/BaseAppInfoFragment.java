@@ -1,5 +1,6 @@
 package com.xiaoqianghe.wqplay.ui.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,12 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.xiaoqianghe.wqplay.R;
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
 import com.xiaoqianghe.wqplay.presenter.AppInfoPresenter;
 import com.xiaoqianghe.wqplay.presenter.contract.AppInfoContract;
+import com.xiaoqianghe.wqplay.ui.activity.AppDetailActivity;
 import com.xiaoqianghe.wqplay.ui.adapter.AppInfoAdapter;
 import com.xiaoqianghe.wqplay.ui.decoration.DividerItemDecoration;
 
@@ -73,6 +76,19 @@ public abstract class BaseAppInfoFragment extends ProgressDialogFragment<AppInfo
         mAdapter.setOnLoadMoreListener(this);
 
         recycleView.setAdapter(mAdapter);
+
+        recycleView.addOnItemTouchListener(new OnItemClickListener() {
+            @Override
+            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+
+                AppInfo appInfo = mAdapter.getItem(position);
+                mApplication.setView(view);
+                Intent intent  = new Intent(getActivity(), AppDetailActivity.class);
+                intent.putExtra("appinfo",appInfo);
+                startActivity(intent);
+
+            }
+        });
     }
 
     abstract AppInfoAdapter buildAdapter();

@@ -3,6 +3,7 @@ package com.xiaoqianghe.wqplay.presenter;
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.common.rx.RxHttpResponseCompat;
 import com.xiaoqianghe.wqplay.common.rx.subscriber.ProgressDialogSubscriber;
+import com.xiaoqianghe.wqplay.common.rx.subscriber.ProgressSubscriber;
 import com.xiaoqianghe.wqplay.data.AppInfoModel;
 import com.xiaoqianghe.wqplay.presenter.contract.AppInfoContract;
 
@@ -24,7 +25,7 @@ public class AppDetailPresenter extends BasePresenter<AppInfoModel,AppInfoContra
     public void getAppDetail(int id){
 
         mModel.getAppDetail(id).compose(RxHttpResponseCompat.<AppInfo>compatResult())
-                .subscribe(new ProgressDialogSubscriber<AppInfo>(mContext,mView) {
+                .subscribe(new ProgressSubscriber<AppInfo>(mContext,mView) {
                     @Override
                     public void onNext(AppInfo appInfo) {
                         mView.showAppDetail(appInfo);

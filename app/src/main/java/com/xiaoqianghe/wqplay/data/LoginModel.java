@@ -7,7 +7,10 @@ import com.xiaoqianghe.wqplay.di.module.LoginModule;
 import com.xiaoqianghe.wqplay.http.ApiService;
 import com.xiaoqianghe.wqplay.presenter.contract.LoginContract;
 
-import rx.Observable;
+//import rx.Observable;
+
+
+import io.reactivex.Observable;
 
 /**
  * Author：Wq

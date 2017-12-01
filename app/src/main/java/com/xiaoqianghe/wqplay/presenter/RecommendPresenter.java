@@ -13,6 +13,7 @@ import com.xiaoqianghe.wqplay.bean.requestbean.IndexBean;
 import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
 import com.xiaoqianghe.wqplay.common.rx.RxHttpResponseCompat;
 import com.xiaoqianghe.wqplay.common.rx.subscriber.ProgressDialogSubscriber;
+import com.xiaoqianghe.wqplay.common.rx.subscriber.ProgressSubscriber;
 import com.xiaoqianghe.wqplay.data.AppInfoModel;
 import com.xiaoqianghe.wqplay.data.RecommedModel;
 import com.xiaoqianghe.wqplay.presenter.contract.AppInfoContract;
@@ -226,7 +227,7 @@ public class RecommendPresenter extends BasePresenter<AppInfoModel,AppInfoContra
 
     public void requestDatas() {
         mModel.index().compose(RxHttpResponseCompat.<IndexBean>compatResult())
-                .subscribe(new ProgressDialogSubscriber<IndexBean>(mContext,mView) {
+                .subscribe(new ProgressSubscriber<IndexBean>(mContext,mView) {
                     @Override
                     public void onNext(IndexBean indexBean) {
                         mView.showResult(indexBean);

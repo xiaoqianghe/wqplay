@@ -3,6 +3,7 @@ package com.xiaoqianghe.wqplay.presenter;
 import com.xiaoqianghe.wqplay.bean.requestbean.Category;
 import com.xiaoqianghe.wqplay.common.rx.RxHttpResponseCompat;
 import com.xiaoqianghe.wqplay.common.rx.subscriber.ProgressDialogSubscriber;
+import com.xiaoqianghe.wqplay.common.rx.subscriber.ProgressSubscriber;
 import com.xiaoqianghe.wqplay.presenter.contract.CategoryContract;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class CategoryPrestenter extends BasePresenter<CategoryContract.ICageoryM
     public void  getAllCategory(){
 
         mModel.getCategories().compose(RxHttpResponseCompat.<List<Category>>compatResult())
-                .subscribe(new ProgressDialogSubscriber<List<Category>>(mContext,mView) {
+                .subscribe(new ProgressSubscriber<List<Category>>(mContext,mView) {
                     @Override
                     public void onNext(List<Category> categories) {
                         mView.showData(categories);

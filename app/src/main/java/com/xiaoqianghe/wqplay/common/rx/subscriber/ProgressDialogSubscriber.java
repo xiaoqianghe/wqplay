@@ -37,23 +37,23 @@ public abstract class ProgressDialogSubscriber<T> extends ErrHandlerSubscriber<T
         return true;
     }
 
-    @Override
-    public void onStart() {
-       // super.onStart();
-        if(isShowProgressDialog()){
-            //this.mProgressDialogHandler.showProgressDialog();
-            mView.showLoading();
-
-        }
-    }
-
-    @Override
-    public void onCompleted() {
-        if(isShowProgressDialog()){
-           // this.mProgressDialogHandler.dismissProgressDialog();
-            mView.dismissLoading();
-        }
-    }
+//    @Override
+//    public void onStart() {
+//       // super.onStart();
+//        if(isShowProgressDialog()){
+//            //this.mProgressDialogHandler.showProgressDialog();
+//            mView.showLoading();
+//
+//        }
+//    }
+//
+//    @Override
+//    public void onCompleted() {
+//        if(isShowProgressDialog()){
+//           // this.mProgressDialogHandler.dismissProgressDialog();
+//            mView.dismissLoading();
+//        }
+//    }
 
     @Override
     public void onError(Throwable e) {

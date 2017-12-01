@@ -1,6 +1,7 @@
 package com.xiaoqianghe.wqplay.common.rx.subscriber;
 
-import rx.Subscriber;
+
+import io.reactivex.Observer;
 
 /**
  * Author：Wq
@@ -8,5 +9,6 @@ import rx.Subscriber;
  * Description：//todo
  */
 
-public abstract class DefualtSubscriber<T> extends Subscriber<T>{
+public abstract class DefualtSubscriber<T> implements Observer<T> {
+
 }

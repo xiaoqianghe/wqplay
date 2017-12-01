@@ -13,6 +13,8 @@ import com.xiaoqianghe.wqplay.presenter.contract.LoginContract;
 
 import javax.inject.Inject;
 
+import io.reactivex.disposables.Disposable;
+
 /**
  * Author：Wq
  * Date：2017/8/18 14:47
@@ -47,11 +49,17 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginModel,Logi
         mModel.login(phone,pwd).compose(RxHttpResponseCompat.<LoginBean>compatResult())
                 .subscribe(new ErrHandlerSubscriber<LoginBean>(mContext) {
 
-                    @Override
-                    public void onStart() {
-                        //super.onStart();
+//                    @Override
+//                    public void onStart() {
+//                        //super.onStart();
+//
+//                        mView.showLoading();
+//                    }
 
-                        mView.showLoading();
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        super.onSubscribe(d);
                     }
 
                     @Override
@@ -61,10 +69,17 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginModel,Logi
                     }
 
                     @Override
-                    public void onCompleted() {
+                    public void onComplete() {
+
                         mView.dismissLoading();
 
                     }
+
+//                    @Override
+//                    public void onCompleted() {
+//                        mView.dismissLoading();
+//
+//                    }
 
                     @Override
                     public void onNext(LoginBean loginBean) {

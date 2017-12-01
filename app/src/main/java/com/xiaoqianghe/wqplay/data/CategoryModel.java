@@ -7,8 +7,10 @@ import com.xiaoqianghe.wqplay.presenter.contract.CategoryContract;
 
 import java.util.List;
 
-import rx.Observable;
+//import rx.Observable;
 
+
+import io.reactivex.Observable;
 /**
  * Author：Wq
  * Date：2017/9/18 15:35

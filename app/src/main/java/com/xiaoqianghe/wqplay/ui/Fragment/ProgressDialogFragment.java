@@ -38,7 +38,7 @@ public abstract class ProgressDialogFragment<T extends BasePresenter>extends Fra
     private ProgressDialog mProgressDialog;
     private Unbinder mUnbinder;
 
-    private AppApplication mApplication;
+    protected AppApplication mApplication;
 
 
     private FrameLayout mRootView;

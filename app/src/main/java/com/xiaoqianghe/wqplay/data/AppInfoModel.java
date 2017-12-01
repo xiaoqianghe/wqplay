@@ -8,7 +8,9 @@ import com.xiaoqianghe.wqplay.http.ApiService;
 import com.xiaoqianghe.wqplay.ui.activity.BaseActivity;
 
 import retrofit2.Callback;
-import rx.Observable;
+
+
+import io.reactivex.Observable;
 
 /**
  * @包名: com.xiaoqianghe.wqplay.data
