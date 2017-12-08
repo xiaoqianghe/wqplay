@@ -7,9 +7,11 @@ import android.util.Log;
 import android.widget.EditText;
 
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
-
-
+//
+//
 //import com.xiaoqianghe.wqplay.di.component.DaggerAppInfoComponent;
+//import com.xiaoqianghe.wqplay.di.component.DaggerAppInfoComponent;
+//import com.xiaoqianghe.wqplay.di.module.AppInfoModule;
 import com.xiaoqianghe.wqplay.di.component.DaggerAppInfoComponent;
 import com.xiaoqianghe.wqplay.di.module.AppInfoModule;
 import com.xiaoqianghe.wqplay.presenter.AppInfoPresenter;
@@ -36,8 +38,9 @@ public class TopListFragment extends BaseAppInfoFragment {
     public void setupActivityComponent(AppComponent appComponent) {
 //        DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this)).build().inject(this);
 
-        DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this)).build().inject(this);
+//        DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this)).build().inject(this);
 
+        DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this)).build().inject(this);
     }
 
 

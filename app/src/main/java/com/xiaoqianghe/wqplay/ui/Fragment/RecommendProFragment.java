@@ -12,7 +12,10 @@ import com.xiaoqianghe.wqplay.R;
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
 
+import com.xiaoqianghe.wqplay.di.component.DaggerRecommendComponent;
+import com.xiaoqianghe.wqplay.di.module.RecommendModule;
 import com.xiaoqianghe.wqplay.presenter.RecommendPresenter;
+import com.xiaoqianghe.wqplay.presenter.contract.AppInfoContract;
 import com.xiaoqianghe.wqplay.presenter.contract.RecommendContract;
 import com.xiaoqianghe.wqplay.ui.adapter.RecomendAppAdapter;
 import com.xiaoqianghe.wqplay.ui.decoration.DividerItemDecoration;
@@ -58,7 +61,10 @@ public class RecommendProFragment extends ProgressDialogFragment<RecommendPresen
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
 //        DaggerRecommendComponent.builder().appComponent(appComponent)
-//        .recommendModule(new RecommendModule(this)).build().inject(this);
+//        .recommendModule(new RecommendModule((AppInfoContract.View) this)).build().inject(this);
+
+//        DaggerRecommendComponent.builder().appComponent(appComponent)
+//                .recommendModule(new RecommendModule(this)).build().inject(this);
     }
 
     @Override

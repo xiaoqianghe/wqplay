@@ -29,8 +29,9 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.cniao5.cniao5play.common.apkparset.AndroidApk;
-import com.cniao5.cniao5play.service.InstallAccessibilityService;
+
+import com.xiaoqianghe.wqplay.common.apkparset.AndroidApk;
+import com.xiaoqianghe.wqplay.service.InstallAccessibilityService;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.xiaoqianghe.wqplay.common.Constant;
 import com.xiaoqianghe.wqplay.common.apkparset.AndroidApk;
 import com.xiaoqianghe.wqplay.common.util.ACache;
+import com.xiaoqianghe.wqplay.common.util.AppUtils;
 import com.xiaoqianghe.wqplay.presenter.contract.AppManagerContract;
 
 import java.io.File;
@@ -30,9 +31,9 @@ public class AppManagerModel implements AppManagerContract.IAppManagerModel {
     private Context mContext;
 
 
-    public AppManagerModel(RxDownload mRxDownload, Context mContext) {
-        mRxDownload = mRxDownload;
+    public AppManagerModel(Context mContext,RxDownload rxDownload) {
         this.mContext = mContext;
+        mRxDownload =rxDownload;
     }
 
     @Override
@@ -54,7 +55,25 @@ public class AppManagerModel implements AppManagerContract.IAppManagerModel {
         return Observable.create(new ObservableOnSubscribe<List<AndroidApk>>() {
             @Override
             public void subscribe(ObservableEmitter<List<AndroidApk>> e) throws Exception {
-                e.onNext(scanApks());
+                e.onNext(scanApks(dir));
+                e.onComplete();
+            }
+        });
+    }
+
+
+
+
+
+    @Override
+    public Observable<List<AndroidApk>> getInstalledApps() {
+
+
+        return Observable.create(new ObservableOnSubscribe<List<AndroidApk>>() {
+            @Override
+            public void subscribe(ObservableEmitter<List<AndroidApk>> e) throws Exception {
+                e.onNext(AppUtils.getInstalledApps(mContext));
+
                 e.onComplete();
             }
         });
@@ -102,13 +121,6 @@ public class AppManagerModel implements AppManagerContract.IAppManagerModel {
 
 
         return androidApks;
-
-
-
-
-
-
-
 
 
     }

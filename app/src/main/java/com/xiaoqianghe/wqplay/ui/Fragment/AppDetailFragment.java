@@ -18,6 +18,9 @@ import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.common.Constant;
 import com.xiaoqianghe.wqplay.common.imageloader.ImageLoader;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
+//import com.xiaoqianghe.wqplay.di.component.DaggerAppDetailComponent;
+//import com.xiaoqianghe.wqplay.di.module.AppDetailModule;
+//import com.xiaoqianghe.wqplay.di.module.AppModelModule;
 import com.xiaoqianghe.wqplay.di.component.DaggerAppDetailComponent;
 import com.xiaoqianghe.wqplay.di.module.AppDetailModule;
 import com.xiaoqianghe.wqplay.di.module.AppModelModule;
@@ -100,10 +103,18 @@ public class AppDetailFragment extends ProgressDialogFragment<AppDetailPresenter
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
 
+//        DaggerAppDetailComponent.builder().appComponent(appComponent)
+//                .appDetailModule(new AppDetailModule(this))
+//                .appModelModule(new AppModelModule())
+//                .build().inject(this);
+
+
         DaggerAppDetailComponent.builder().appComponent(appComponent)
                 .appDetailModule(new AppDetailModule(this))
                 .appModelModule(new AppModelModule())
-                .build().inject(this);
+                .build()
+                .inject(this);
+
 
 
     }

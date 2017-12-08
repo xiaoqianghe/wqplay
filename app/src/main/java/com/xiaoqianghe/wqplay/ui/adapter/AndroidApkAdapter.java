@@ -117,6 +117,23 @@ public class AndroidApkAdapter extends BaseQuickAdapter<AndroidApk,BaseViewHolde
 
         }
 
+        else if(flag==FLAG_APP){
+
+
+            btn.setText("卸载");
+            RxView.clicks(btn).subscribe(new Consumer<Object>() {
+
+                @Override
+                public void accept(@NonNull Object o) throws Exception {
+
+                    AppUtils.uninstallApk(mContext,item.getPackageName());
+                }
+            });
+
+
+            txtStatus.setText("v"+item.getAppVersionName() +" " +(item.isSystem()?"内置":"第三方")); // size 加进来
+        }
+
 
 
 

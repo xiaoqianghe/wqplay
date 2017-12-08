@@ -1,5 +1,6 @@
 package com.xiaoqianghe.wqplay.http;
 
+import com.xiaoqianghe.wqplay.bean.SearchResult;
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.bean.requestbean.BaseBean;
 import com.xiaoqianghe.wqplay.bean.requestbean.Category;
@@ -48,7 +49,7 @@ public interface ApiService {
     public  Observable<BaseBean<PageBean<AppInfo>>> games(@Query("page") int page);
 
     @GET("index")
-    public  Observable<BaseBean<IndexBean>> index();
+    Observable<BaseBean<IndexBean>> index();
 
     @POST("login")
     Observable<BaseBean<LoginBean>> login(@Body LoginRequestBean param);
@@ -71,6 +72,21 @@ public interface ApiService {
 
     @GET("app/{id}")
     Observable<BaseBean<AppInfo>> getAppDetail(@Path("id") int id);
+
+
+
+
+
+    @GET("search/suggest")
+    Observable<BaseBean<List<String>>> searchSuggest(@Query("keyword") String keyword);
+
+
+    @GET("search")
+    Observable<BaseBean<SearchResult>> search(@Query("keyword") String keyword);
+
+
+    @GET("apps/updateinfo")
+    Observable<BaseBean<List<AppInfo>>> getAppsUpdateinfo(@Query("packageName") String packageName,@Query("versionCode") String versionCode);
 
 
 

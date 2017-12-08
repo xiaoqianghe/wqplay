@@ -63,7 +63,7 @@
 
 
 
-    <com.cniao5.cniao5play.ui.widget.DownloadProgressButton
+    <com.xiaoqianghe.wqplay.ui.widget.DownloadProgressButton
         android:id="@+id/btn_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

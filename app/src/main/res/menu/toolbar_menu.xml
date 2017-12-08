@@ -8,6 +8,16 @@
         android:title="@string/menu_search"
         app:showAsAction="ifRoom" />
 
+
+    <item
+        android:id="@+id/action_download"
+
+        android:title="@string/download"
+        app:actionProviderClass="com.xiaoqianghe.wqplay.ui.widget.BadgeActionProvider"
+        app:showAsAction="ifRoom"
+
+        />
+
     <!--<item-->
         <!--android:id="@id/action_notification"-->
         <!--android:icon="@mipmap/ic_notifications"-->

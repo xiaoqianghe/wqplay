@@ -10,7 +10,15 @@ import android.widget.LinearLayout;
 import com.xiaoqianghe.wqplay.R;
 import com.xiaoqianghe.wqplay.common.Constant;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
+import com.xiaoqianghe.wqplay.ui.Fragment.DownloadedFragment;
+import com.xiaoqianghe.wqplay.ui.Fragment.DownloadingFragment;
+import com.xiaoqianghe.wqplay.ui.Fragment.InstalledAppAppFragment;
+import com.xiaoqianghe.wqplay.ui.Fragment.UpgradeAppFragment;
 import com.xiaoqianghe.wqplay.ui.adapter.ViewPagerAdapter;
+import com.xiaoqianghe.wqplay.ui.bean.FragmentInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,14 +61,14 @@ public class AppManagerActivity extends BaseActivity {
 
 
         PagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(),initFragments());
-        mViewPager.setOffscreenPageLimit(adapter.getCount());
-        mViewPager.setAdapter(adapter);
+        viewpager.setOffscreenPageLimit(adapter.getCount());
+        viewpager.setAdapter(adapter);
 
 
-        mTabLayout.setupWithViewPager(mViewPager);
+        tabs.setupWithViewPager(viewpager);
 
-        mViewPager.setCurrentItem(position);
-        mTabLayout.getTabAt(position).select();
+        viewpager.setCurrentItem(position);
+        tabs.getTabAt(position).select();
 
 
     }
@@ -81,5 +89,22 @@ public class AppManagerActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+
+
+    private List<FragmentInfo> initFragments(){
+
+        List<FragmentInfo> mFragments = new ArrayList<>(4);
+
+        mFragments.add(new FragmentInfo("下载",DownloadingFragment.class));
+        mFragments.add(new FragmentInfo ("已完成", DownloadedFragment.class));
+        mFragments.add(new FragmentInfo ("升级", UpgradeAppFragment.class));
+
+        mFragments.add(new FragmentInfo ("已经安装",InstalledAppAppFragment.class));
+
+
+        return  mFragments;
+
     }
 }

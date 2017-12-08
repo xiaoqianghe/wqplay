@@ -2,6 +2,7 @@ package com.xiaoqianghe.wqplay.ui.Fragment;
 
 import android.support.v7.widget.RecyclerView;
 
+import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.common.apkparset.AndroidApk;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
 import com.xiaoqianghe.wqplay.ui.adapter.AndroidApkAdapter;
@@ -41,10 +42,6 @@ public class DownloadedFragment extends AppManangerFragment {
         mPresenter.getLocalApks();
     }
 
-    @Override
-    public void setupActivityComponent(AppComponent appComponent) {
-//        super.setupActivityComponent(appComponent);
-    }
 
     @Override
     public void showApps(List<AndroidApk> androidApks) {
@@ -52,4 +49,6 @@ public class DownloadedFragment extends AppManangerFragment {
 
         mAdapter.addData(androidApks);
     }
+
+
 }

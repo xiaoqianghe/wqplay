@@ -34,9 +34,9 @@ public class AppManagerModule {
 
 
     @Provides
-    public AppManagerModel provideModel(Application application,RxDownload rxDownload){
+    public AppManagerContract.IAppManagerModel provideModel(Application application,RxDownload rxDownload){
 
-        return new AppManagerModel(rxDownload,application);
+        return new AppManagerModel(application,rxDownload);
 
 
 

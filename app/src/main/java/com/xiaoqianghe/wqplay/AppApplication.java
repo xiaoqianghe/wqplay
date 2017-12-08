@@ -8,6 +8,8 @@ import android.view.View;
 import com.mikepenz.iconics.Iconics;
 import com.xiaoqianghe.wqplay.common.font.WqplayFont;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
+//import com.xiaoqianghe.wqplay.di.component.DaggerAppComponent;
+//import com.xiaoqianghe.wqplay.di.component.DaggerAppComponent;
 import com.xiaoqianghe.wqplay.di.component.DaggerAppComponent;
 import com.xiaoqianghe.wqplay.di.module.AppModule;
 import com.xiaoqianghe.wqplay.di.module.HttpModule;
@@ -31,13 +33,17 @@ public class AppApplication extends Application {
         super.onCreate();
 //        mAppComponent= DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
 //        mAppComponent= DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
-
+//
 //        mAppComponent=DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
+
+        mAppComponent= DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
 
        Iconics.init(getApplicationContext());
         Iconics.registerFont(new WqplayFont());
 
-        mAppComponent= DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
+
+
+
 
 
 

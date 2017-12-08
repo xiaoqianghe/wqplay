@@ -13,6 +13,8 @@ import com.xiaoqianghe.wqplay.common.imageloader.ImageLoader;
 
 import java.util.List;
 
+import zlc.season.rxdownload2.RxDownload;
+
 /**
  * Author：Wq
  * Date：2017/6/29 15:27
@@ -73,6 +75,13 @@ public class AppInfoAdapter extends BaseQuickAdapter<AppInfo,BaseViewHolder> {
         private boolean isShowCategoryName;
         private boolean isShowBrief;
 
+
+
+        private boolean isUpdateStatus;
+
+        private RxDownload mRxDownload;
+
+
         private int layoutId=R.layout.template_appinfo;
 
 
@@ -109,6 +118,16 @@ public class AppInfoAdapter extends BaseQuickAdapter<AppInfo,BaseViewHolder> {
 
         public Builder layout(int resId){
             this.layoutId = resId;
+            return this;
+        }
+
+
+        public Builder rxDownload(RxDownload rxDownload){
+            this.mRxDownload = rxDownload;
+            return this;
+        }
+        public Builder updateStatus(boolean b){
+            this.isUpdateStatus = b;
             return this;
         }
 

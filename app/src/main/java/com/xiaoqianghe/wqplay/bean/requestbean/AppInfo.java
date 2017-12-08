@@ -1,5 +1,7 @@
 package com.xiaoqianghe.wqplay.bean.requestbean;
 
+import com.xiaoqianghe.wqplay.bean.AppDownloadInfo;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -59,6 +61,18 @@ public class AppInfo implements Serializable {
     private int diffFileSize;
     private List<AppInfo> sameDevAppInfoList;
     private String categoryId;
+
+
+
+    private AppDownloadInfo mAppDownloadInfo;
+
+    public AppDownloadInfo getAppDownloadInfo() {
+        return mAppDownloadInfo;
+    }
+
+    public void setAppDownloadInfo(AppDownloadInfo appDownloadInfo) {
+        mAppDownloadInfo = appDownloadInfo;
+    }
 
 
 

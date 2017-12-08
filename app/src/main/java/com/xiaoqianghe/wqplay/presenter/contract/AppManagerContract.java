@@ -1,5 +1,6 @@
 package com.xiaoqianghe.wqplay.presenter.contract;
 
+import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.common.apkparset.AndroidApk;
 import com.xiaoqianghe.wqplay.ui.BaseView;
 
@@ -23,6 +24,8 @@ public interface AppManagerContract {
 
         void showApps(List<AndroidApk> androidApks);
 
+        void showUpdateApps(List<AppInfo> appInfos);
+
     }
 
     interface  IAppManagerModel{
@@ -30,5 +33,7 @@ public interface AppManagerContract {
         Observable<List<DownloadRecord>> getDownloadRecord();
         RxDownload getRxDownload();
         Observable<List<AndroidApk>> getLocalApks();
+
+        Observable<List<AndroidApk>> getInstalledApps();
     }
 }

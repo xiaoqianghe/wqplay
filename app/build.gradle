@@ -97,4 +97,8 @@ dependencies {
     compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.8.2@aar'
     //降级
     compile project(':rxdownload2')
+
+    compile 'cn.qqtheme.framework:FilePicker:1.5.1'
+
+//    compile project(path: ':rxdownload')
 }

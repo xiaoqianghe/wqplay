@@ -14,6 +14,9 @@ import com.xiaoqianghe.wqplay.R;
 import com.xiaoqianghe.wqplay.bean.requestbean.Category;
 import com.xiaoqianghe.wqplay.common.Constant;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
+//import com.xiaoqianghe.wqplay.di.component.DaggerCategoryComponent;
+//import com.xiaoqianghe.wqplay.di.module.CategoryModule;
+import com.xiaoqianghe.wqplay.di.component.DaggerAppDetailComponent;
 import com.xiaoqianghe.wqplay.di.component.DaggerCategoryComponent;
 import com.xiaoqianghe.wqplay.di.module.CategoryModule;
 import com.xiaoqianghe.wqplay.presenter.CategoryPrestenter;
@@ -97,14 +100,16 @@ public class CategoryFragment extends ProgressDialogFragment<CategoryPrestenter>
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
 
+//
+//        DaggerCategoryComponent.builder().appComponent(appComponent).categoryModule(new CategoryModule(this));
+//
+//
+//
+//
+
+
         DaggerCategoryComponent.builder().appComponent(appComponent).categoryModule(new CategoryModule(this))
-                .build().inject(this);
-
-
-
-
-
-
+        .build().inject(this);
 
     }
 

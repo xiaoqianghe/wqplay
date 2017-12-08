@@ -31,6 +31,15 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter{
         initFragmentList();
     }
 
+
+    public ViewPagerAdapter(FragmentManager fm,List<FragmentInfo> fragments) {
+        super(fm);
+
+//        initFragments();
+
+        mFragmentList = fragments;
+    }
+
     private void initFragmentList() {
         mFragmentList.add(new FragmentInfo("篮球",RecommendFragment.class));
 //        mFragmentList.add(new FragmentInfo("篮球Pro",RecommendProFragment.class));
