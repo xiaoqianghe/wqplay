@@ -1,28 +1,23 @@
-package com.xiaoqianghe.wqplay.bean.requestbean;
+package com.xiaoqianghe.wqplay.bean;
+
+import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * Author：Wq
- * Date：2017/8/18 14:42
+ * Date：2017/12/11 17:30
  * Description：//todo
  */
 
-public class BaseEntity implements Serializable {
+public class AppInfoPager implements Serializable{
 
     private boolean hasMore;
     private String host;
     private String thumbnail;
     private List<AppInfo> listApp;
 
-    public boolean isHasMore() {
-        return hasMore;
-    }
-
-    public void setHasMore(boolean hasMore) {
-        this.hasMore = hasMore;
-    }
 
     public String getHost() {
         return host;
@@ -30,6 +25,14 @@ public class BaseEntity implements Serializable {
 
     public void setHost(String host) {
         this.host = host;
+    }
+
+    public boolean isHasMore() {
+        return hasMore;
+    }
+
+    public void setHasMore(boolean hasMore) {
+        this.hasMore = hasMore;
     }
 
     public String getThumbnail() {

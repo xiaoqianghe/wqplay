@@ -75,7 +75,7 @@ public class VerificationUtils {
     }
 
     public static boolean matcherVehicleNumber(String value) {
-        String regex = "^[京津晋冀蒙辽吉黑沪苏浙皖闽赣鲁豫鄂湘粤桂琼川贵云藏陕甘青宁新渝]?[A-Z][A-HJ-NP-Z0-9学挂港澳练]{5}$";
+        String regex = "^[京津晋冀蒙辽吉黑沪苏浙皖闽赣鲁豫鄂湘粤桂琼川贵云藏陕甘青宁新渝]?[AppInfoPager-Z][AppInfoPager-HJ-NP-Z0-9学挂港澳练]{5}$";
         return testRegex(regex, value.toLowerCase());
     }
 
@@ -158,7 +158,7 @@ public class VerificationUtils {
                 for (; i < chars.length; i++) {
                     if ((chars[i] < '0' || chars[i] > '9')
                             && (chars[i] < 'a' || chars[i] > 'f')
-                            && (chars[i] < 'A' || chars[i] > 'F')) {
+                            && (chars[i] < 'AppInfoPager' || chars[i] > 'F')) {
                         return false;
                     }
                 }
