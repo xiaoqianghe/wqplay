@@ -14,15 +14,20 @@ import com.xiaoqianghe.wqplay.R;
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
+import com.xiaoqianghe.wqplay.di.component.DaggerAppInfoComponent;
+import com.xiaoqianghe.wqplay.di.module.AppInfoModule;
 import com.xiaoqianghe.wqplay.presenter.AppInfoPresenter;
 import com.xiaoqianghe.wqplay.presenter.contract.AppInfoContract;
 import com.xiaoqianghe.wqplay.ui.activity.AppDetailActivity;
 import com.xiaoqianghe.wqplay.ui.adapter.AppInfoAdapter;
 import com.xiaoqianghe.wqplay.ui.decoration.DividerItemDecoration;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import zlc.season.rxdownload2.RxDownload;
 
 /**
  * Author：Wq
@@ -34,6 +39,10 @@ public abstract class BaseAppInfoFragment extends ProgressDialogFragment<AppInfo
     @BindView(R.id.recycle_view)
     RecyclerView recycleView;
     Unbinder unbinder;
+
+
+    @Inject
+    RxDownload mRxdownload;
 
     private AppInfoAdapter mAdapter;
     int page =0;
@@ -60,7 +69,8 @@ public abstract class BaseAppInfoFragment extends ProgressDialogFragment<AppInfo
 
     @Override
     protected void init() {
-        mPresenter.requestData(type(),page);
+        int type=type();
+        mPresenter.requestData(type,page);
         initRecycleView();
 
     }
@@ -98,10 +108,13 @@ public abstract class BaseAppInfoFragment extends ProgressDialogFragment<AppInfo
         return R.layout.template_recycler_view;
     }
 
-//    @Override
-//    public void setupActivityComponent(AppComponent appComponent) {
-//
-//    }
+    @Override
+    public void setupActivityComponent(AppComponent appComponent) {
+
+        DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this))
+                .build().injectTopListFragment(this);
+
+    }
 
     @Override
     public void onLoadMoreRequested() {

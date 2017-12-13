@@ -18,6 +18,7 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
+import zlc.season.rxdownload2.RxDownload;
 //import rx.Observable;
 //import rx.Subscriber;
 
@@ -44,6 +45,12 @@ public class AppInfoPresenter extends BasePresenter<AppInfoModel,AppInfoContract
     public static final int FEATURED=0;
     public static final int TOPLIST=1;
     public static final int NEWLIST=2;
+
+
+    public static final int HOT_APP_LIST=3;
+
+//    @Inject
+//    RxDownload mRxdownload;
 
     @Inject
     public AppInfoPresenter(AppInfoModel mModel, AppInfoContract.AppInfoView mView) {

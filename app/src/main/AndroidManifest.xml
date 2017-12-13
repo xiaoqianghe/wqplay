@@ -52,6 +52,11 @@
         <activity android:name=".ui.activity.SettingActivity"/>
 
 
+        <activity android:name=".ui.activity.HotAppActivity"/>
+
+        <activity android:name=".ui.activity.SubjectActivity"/>
+
+
         <!--//使用蓝牙所需要的权限-->
         <uses-permission android:name="android.permission.BLUETOOTH"/>
 

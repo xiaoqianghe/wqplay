@@ -226,20 +226,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
 
                 switch (item.getItemId()) {
-
-//                    case R.id.menu_app_update:
-//
-//                        Toast.makeText(MainActivity.this, "点击了应用更新", Toast.LENGTH_LONG).show();
-//
-//                        break;
-
-
-//                    case R.id.menu_message:
-//
-//                        Toast.makeText(MainActivity.this, "点击了消息", Toast.LENGTH_LONG).show();
-//
-//                        break;
-
                     case R.id.menu_logout:
 
                         logout();
@@ -262,10 +248,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                         toAppManagerActivity(2);
 
                         break;
-
-
-
-
                     case R.id.menu_setting:
 
                         startActivity(new Intent(MainActivity.this,SettingActivity.class));
@@ -273,7 +255,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                         break;
 
                 }
-
 
                 return false;
             }

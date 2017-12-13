@@ -1,6 +1,8 @@
 package com.xiaoqianghe.wqplay.http;
 
 import com.xiaoqianghe.wqplay.bean.SearchResult;
+import com.xiaoqianghe.wqplay.bean.Subject;
+import com.xiaoqianghe.wqplay.bean.SubjectDetail;
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.bean.requestbean.BaseBean;
 import com.xiaoqianghe.wqplay.bean.requestbean.Category;
@@ -87,6 +89,14 @@ public interface ApiService {
 
     @GET("apps/updateinfo")
     Observable<BaseBean<List<AppInfo>>> getAppsUpdateinfo(@Query("packageName") String packageName,@Query("versionCode") String versionCode);
+
+
+
+    @GET("subject/hot")
+    Observable<BaseBean<PageBean<Subject>>> subjects(@Query("page") int page);
+
+    @GET("subject/{id}")
+    Observable<BaseBean<SubjectDetail>> subjectDetail(@Path("id") int id);
 
 
 

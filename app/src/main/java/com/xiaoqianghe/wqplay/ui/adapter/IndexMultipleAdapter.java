@@ -1,6 +1,7 @@
 package com.xiaoqianghe.wqplay.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,6 +17,8 @@ import com.xiaoqianghe.wqplay.R;
 import com.xiaoqianghe.wqplay.bean.requestbean.Banner;
 import com.xiaoqianghe.wqplay.bean.requestbean.IndexBean;
 import com.xiaoqianghe.wqplay.common.imageloader.ImageLoader;
+import com.xiaoqianghe.wqplay.ui.activity.HotAppActivity;
+import com.xiaoqianghe.wqplay.ui.activity.SubjectActivity;
 import com.xiaoqianghe.wqplay.ui.decoration.DividerItemDecoration;
 import com.xiaoqianghe.wqplay.ui.widget.BannerLayout;
 
@@ -165,7 +168,19 @@ public class IndexMultipleAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View v) {
+
+        if(v.getId() == R.id.layout_hot_app){
+            mContext.startActivity(new Intent(mContext, HotAppActivity.class));
+        }
+        else if(v.getId() == R.id.layout_hot_subject){
+
+            mContext.startActivity(new Intent(mContext, SubjectActivity.class));
+        }
+
+
+
+
 
     }
 

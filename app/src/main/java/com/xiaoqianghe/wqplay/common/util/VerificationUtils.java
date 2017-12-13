@@ -158,7 +158,7 @@ public class VerificationUtils {
                 for (; i < chars.length; i++) {
                     if ((chars[i] < '0' || chars[i] > '9')
                             && (chars[i] < 'a' || chars[i] > 'f')
-                            && (chars[i] < 'AppInfoPager' || chars[i] > 'F')) {
+                            && (chars[i] < 'A' || chars[i] > 'F')) {
                         return false;
                     }
                 }

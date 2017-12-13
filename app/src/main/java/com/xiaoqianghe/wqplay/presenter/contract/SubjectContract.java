@@ -23,7 +23,7 @@ public interface SubjectContract {
 
         void onLoadMoreComplete();
 
-        void showSubjectDetail();
+        void showSubjectDetail(SubjectDetail subjectDetail);
 
 
     }

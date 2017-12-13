@@ -34,14 +34,14 @@ public class TopListFragment extends BaseAppInfoFragment {
         return AppInfoPresenter.TOP_LIST;
     }
 
-    @Override
-    public void setupActivityComponent(AppComponent appComponent) {
+//    @Override
+//    public void setupActivityComponent(AppComponent appComponent) {
+////        DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this)).build().inject(this);
+//
+////        DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this)).build().inject(this);
+//
 //        DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this)).build().inject(this);
-
-//        DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this)).build().inject(this);
-
-        DaggerAppInfoComponent.builder().appComponent(appComponent).appInfoModule(new AppInfoModule(this)).build().inject(this);
-    }
+//    }
 
 
 
