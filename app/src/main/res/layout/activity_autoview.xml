@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res/com.xiaoqianghe.wqplay"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+    <com.xiaoqianghe.wqplay.ui.widget.CustomTitleView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:titleText="3712"
+        android:padding="10dp"
+        custom:titleTextColor="#ff0000"
+        android:layout_centerInParent="true"
+        custom:titleTextSize="40sp"
+    >
+</com.xiaoqianghe.wqplay.ui.widget.CustomTitleView>
+
+    <com.xiaoqianghe.wqplay.ui.widget.CustomImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        custom:image="@drawable/ic_launcher"
+        custom:imageScaleType="center"
+        custom:titleText="妹子~"
+        custom:titleTextColor="#ff0000"
+        custom:titleTextSize="12sp"
+
+        />
+
+    <com.xiaoqianghe.wqplay.ui.widget.CustomProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:firstColor="@color/md_yellow_A700"
+        custom:secondColor="@color/md_red_A700"
+        custom:circleWidth="30dp"
+        custom:speed="30"
+        />
+
+
+    <!--<attr name="firstColor" />-->
+    <!--<attr name="secondColor" />-->
+    <!--<attr name="circleWidth" />-->
+    <!--<attr name="dotCount" />-->
+    <!--<attr name="splitSize" />-->
+    <!--<attr name="bg" />-->
+
+    <com.xiaoqianghe.wqplay.ui.widget.CustomVolumControlBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="100dp"
+        custom:firstColor="@color/md_pink_A400"
+        custom:secondColor="@color/md_teal_500"
+        custom:circleWidth="10dp"
+        custom:dotCount="20"
+        custom:splitSize="20"
+        custom:bg="@drawable/ic_launcher"
+        />
+
+</RelativeLayout>

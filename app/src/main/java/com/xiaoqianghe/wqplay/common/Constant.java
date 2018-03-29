@@ -37,4 +37,15 @@ public class Constant {
     public static final String APP_UPDATE_LIST = "app_update_list";
     public static final String POSITION = "position";
 
+
+
+
+    public interface TableType{
+        public static final String TAB_HOME= "Home";
+        public static final String TAB_BOOKS= "Books";
+        public static final String TAB_MOVIES= "Movies";
+        public static final String TAB_Music= "Music";
+
+    }
+
 }

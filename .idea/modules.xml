@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/rxdownload2/rxdownload2.iml" filepath="$PROJECT_DIR$/rxdownload2/rxdownload2.iml" />
       <module fileurl="file://$PROJECT_DIR$/wqPlay.iml" filepath="$PROJECT_DIR$/wqPlay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wqlibrary/wqlibrary.iml" filepath="$PROJECT_DIR$/wqlibrary/wqlibrary.iml" />
     </modules>
   </component>
 </project>

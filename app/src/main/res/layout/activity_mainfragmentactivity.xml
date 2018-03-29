@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--<android.support.design.widget.CoordinatorLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <!--<include layout="@layout/toolbar"/>-->
+
+        <!--<include layout="@layout/container"/>-->
+
+        <!--<android.support.design.widget.BottomNavigationView-->
+            <!--android:id="@+id/bottom_navigation"-->
+            <!--style="@style/Widget.Design.BottomNavigationView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--android:background="@color/viewBackground"-->
+            <!--app:elevation="16dp"-->
+            <!--app:itemIconTint="@drawable/nav_item_color_state"-->
+            <!--app:itemTextColor="@drawable/nav_item_color_state"-->
+            <!--app:layout_behavior="com.meiji.toutiao.widget.behavior.BottomNavigationBehavior"-->
+            <!--app:menu="@menu/bottom_navigation_main"/>-->
+
+    <!--</android.support.design.widget.CoordinatorLayout>-->
+
+    <!--<android.support.design.widget.NavigationView-->
+        <!--android:id="@+id/nav_view"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="start"-->
+        <!--android:fitsSystemWindows="true"-->
+        <!--app:headerLayout="@layout/nav_header_main"-->
+        <!--app:menu="@menu/nav_menu"/>-->
+
+
+    <!--does not have a valid layout_gravity - must be Gravity.LEFT, Gravity.RIGHT or Gravity.NO_GRAVITY-->
+
+    <include layout="@layout/toolbar"/>
+    <FrameLayout
+        android:id="@+id/layFrame"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        android:id="@+id/bottom_navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />
+
+</LinearLayout>

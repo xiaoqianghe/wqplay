@@ -9,6 +9,8 @@ import com.xiaoqianghe.wqplay.R;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
 import com.xiaoqianghe.wqplay.ui.Fragment.SettingFragment;
 
+import java.lang.reflect.Array;
+
 import butterknife.BindView;
 
 /**
@@ -34,6 +36,7 @@ public class SettingActivity extends BaseActivity{
 
     @Override
     public void init() {
+
 
         mToolBar.setNavigationIcon(
                 new IconicsDrawable(this)

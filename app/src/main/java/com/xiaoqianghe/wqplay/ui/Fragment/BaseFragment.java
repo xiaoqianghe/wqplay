@@ -93,4 +93,7 @@ public abstract class BaseFragment<T extends BasePresenter>extends Fragment impl
 
 
     }
+
+
+
 }
