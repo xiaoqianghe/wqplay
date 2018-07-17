@@ -52,6 +52,13 @@ protected AppApplication mApplication;
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        init();
+    }
+
     protected abstract void init();//初始化
 
     protected abstract int setLayout();//设置布局文件Id

@@ -175,12 +175,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        // TODO: add setContentView(...) invocation
+//        ButterKnife.bind(this);
+//    }
 
 
     private void initDrawerLayout() {
