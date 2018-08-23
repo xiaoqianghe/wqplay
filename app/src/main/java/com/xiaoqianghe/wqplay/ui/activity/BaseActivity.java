@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.xiaoqianghe.wqplay.ActivityManager;
 import com.xiaoqianghe.wqplay.AppApplication;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
 import com.xiaoqianghe.wqplay.presenter.BasePresenter;
@@ -40,6 +41,9 @@ protected AppApplication mApplication;
         this.mApplication = (AppApplication) getApplication();
         setupAcitivtyComponent(mApplication.getAppComponent());
         init();
+
+        ActivityManager.getInstance().addActivity(this);
+
     }
 
 
@@ -48,8 +52,9 @@ protected AppApplication mApplication;
         super.onDestroy();
         if(mUnbinder!=Unbinder.EMPTY){
             mUnbinder.unbind();
-
         }
+
+        ActivityManager.getInstance().removeActivity(this);
     }
 
     protected abstract void init();//初始化

@@ -300,4 +300,6 @@
 
     <color name="background">#F1F1F1</color>
 
+    <color name="colorStatus">#32A7F6</color>
+
 </resources>

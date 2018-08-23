@@ -43,12 +43,9 @@ public class RxHttpResponseCompat {
                     public ObservableSource<T> apply(@NonNull final BaseBean<T> tBaseBean) throws Exception {
 
                         if(tBaseBean.SUCCESS()){
-
-
                             return Observable.create(new ObservableOnSubscribe<T>() {
                                 @Override
                                 public void subscribe(ObservableEmitter<T> subscriber) throws Exception {
-
                                     try {
                                         subscriber.onNext(tBaseBean.getData());
                                         subscriber.onComplete();

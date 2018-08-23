@@ -74,8 +74,6 @@ public class RecommendFragment extends ProgressDialogFragment<RecommendPresenter
 
         //动画
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
     }
 
 

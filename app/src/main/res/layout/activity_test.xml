@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    android:orientation="vertical"
+    tools:context="com.xiaoqianghe.wqplay.ui.activity.LoginActivity">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="thollow  测试页面"
+    />
+
+      <Button
+          android:id="@+id/bt_totest"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="点击测试哦"
+          />
+
+
+
+
+
+
+</LinearLayout>

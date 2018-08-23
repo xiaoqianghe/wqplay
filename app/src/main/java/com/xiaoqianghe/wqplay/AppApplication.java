@@ -24,6 +24,8 @@ import com.xiaoqianghe.wqplay.di.module.HttpModule;
 public class AppApplication extends Application {
 
 
+    public static AppApplication instance;
+
     private AppComponent mAppComponent;
 
     private View mView;
@@ -31,33 +33,19 @@ public class AppApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-//        mAppComponent= DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
-//        mAppComponent= DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
-//
-//        mAppComponent=DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
-
+        instance=this;
         mAppComponent= DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
-
-       Iconics.init(getApplicationContext());
+        Iconics.init(getApplicationContext());
         Iconics.registerFont(new WqplayFont());
-
-
-
-
-
-
-
     }
 
 
     public static AppApplication get(Context mContext){
-
         return (AppApplication)mContext.getApplicationContext();
 
     }
 
     public AppComponent getAppComponent(){
-
         return mAppComponent;
     }
 
@@ -70,4 +58,14 @@ public class AppApplication extends Application {
     public void setView(View view) {
         mView = view;
     }
+
+
+    /**
+     * 获取全局上下文*/
+    public static Context getContext() {
+        return instance;
+    }
+
+
+
 }

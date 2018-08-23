@@ -18,6 +18,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.signature.StringSignature;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
@@ -27,11 +28,11 @@ import jp.wasabeef.glide.transformations.GrayscaleTransformation;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
- * 菜鸟窝http://www.cniao5.com 一个高端的互联网技能学习平台
  *
- * @author Ivan
- * @version V1.0
- * @Package com.cniao5.cniao5market.common.imageloader
+ *
+ * @author
+ * @version
+ * @Package
  * @Description: ${TODO}(用一句话描述该文件做什么)
  * @date
  */
@@ -107,6 +108,8 @@ public class ImageLoader {
             GenericRequestBuilder builder = null;
             if (config.isAsGif()) {//gif类型
                 GifRequestBuilder request = Glide.with(context).load(objUrl).asGif();
+
+//                GifRequestBuilder request = Picasso.with(context).load(objUrl).
                 if (config.getCropType() == ImageLoadConfig.CENTER_CROP) {
                     request.centerCrop();
                 } else {
@@ -115,6 +118,8 @@ public class ImageLoader {
                 builder = request;
             } else if (config.isAsBitmap()) {  //bitmap 类型
                 BitmapRequestBuilder request = Glide.with(context).load(objUrl).asBitmap();
+
+//                Picasso.with(context).load(objUrl).as
                 if (config.getCropType() == ImageLoadConfig.CENTER_CROP) {
                     request.centerCrop();
                 } else {

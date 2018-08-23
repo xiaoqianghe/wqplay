@@ -20,6 +20,9 @@ public abstract class ProgressDialogSubscriber<T> extends ErrHandlerSubscriber<T
 
     private BaseView mView;
 
+    private boolean isStartShow=true;
+    private boolean isEndDimiss=true;
+
 //    public ProgressDialogSubscriber(Context context){
 //
 //        super(context);
@@ -31,6 +34,7 @@ public abstract class ProgressDialogSubscriber<T> extends ErrHandlerSubscriber<T
         super(mContext);
         this.mView=mView;
     }
+
 
 
     public boolean isShowProgressDialog(){

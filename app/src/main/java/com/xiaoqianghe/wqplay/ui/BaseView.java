@@ -15,5 +15,4 @@ public interface BaseView {
     void dismissLoading();
     void showError(String str);
 
-
 }

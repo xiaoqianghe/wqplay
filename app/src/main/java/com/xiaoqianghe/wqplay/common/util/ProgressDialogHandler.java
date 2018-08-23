@@ -1,7 +1,9 @@
 package com.xiaoqianghe.wqplay.common.util;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
@@ -25,8 +27,10 @@ public class ProgressDialogHandler extends Handler {
     public static final int DISMISS_PROGRESS_DIALOG=0;
 
 
-    private SweetAlertDialog mProgressDialog;
-    private Context  context;
+//    private SweetAlertDialog mProgressDialog;
+
+    private ProgressDialog mProgressDialog;
+    protected Context  context;
     private OnProgressCancelListener mProgressCancelListener;
 
     private boolean cancelable;
@@ -40,31 +44,54 @@ public class ProgressDialogHandler extends Handler {
 
     }
 
+    private void initProgressDialog(){
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(context);
+            mProgressDialog.setMessage(context.getResources().getString(R.string.loading));
+            mProgressDialog.setCancelable(cancelable);
 
-    private void initProgressDialog() {
-
-
-        if(mProgressDialog ==null){
-
-            mProgressDialog = new SweetAlertDialog(context,SweetAlertDialog.PROGRESS_TYPE);
-            mProgressDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-            mProgressDialog.setTitleText(context.getResources().getString(R.string.loading));
-
-            if(cancelable){
-
-                mProgressDialog.setCancelText(context.getResources().getString(R.string.close));
-                mProgressDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            if (cancelable) {
+                mProgressDialog.setButton(DialogInterface.BUTTON_POSITIVE, "关闭", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-                        sweetAlertDialog.cancel();
-                        if(mProgressCancelListener !=null){
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(mProgressCancelListener !=null)
                             mProgressCancelListener.onCancelProgress();
-                        }
                     }
                 });
+
             }
+
+
         }
     }
+
+
+
+
+//    private void initProgressDialog() {
+//
+//
+//        if(mProgressDialog ==null){
+//
+//            mProgressDialog = new SweetAlertDialog(context,SweetAlertDialog.PROGRESS_TYPE);
+//            mProgressDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+//            mProgressDialog.setTitleText(context.getResources().getString(R.string.loading));
+//
+//            if(cancelable){
+//
+//                mProgressDialog.setCancelText(context.getResources().getString(R.string.close));
+//                mProgressDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+//                    @Override
+//                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+//                        sweetAlertDialog.cancel();
+//                        if(mProgressCancelListener !=null){
+//                            mProgressCancelListener.onCancelProgress();
+//                        }
+//                    }
+//                });
+//            }
+//        }
+//    }
 
 
 

@@ -61,9 +61,6 @@ public class RxErrHandler {
 
 
     public void  showErrorMessage(BaseException e){
-
-
         Toast.makeText(mContext,e.getDisplayMessage(),Toast.LENGTH_LONG).show();
-
     }
 }

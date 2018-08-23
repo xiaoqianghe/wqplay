@@ -49,6 +49,13 @@ public class CommonParamsInterceptor implements Interceptor {
         this.mGson = mGson;
     }
 
+
+    public CommonParamsInterceptor(Gson mGson) {
+
+        Log.d(TAG,"CommonParamsInterceptor 构造函数");
+        this.mGson = mGson;
+    }
+
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request=chain.request();
@@ -59,10 +66,14 @@ public class CommonParamsInterceptor implements Interceptor {
         String method=request.method();
         HashMap<String,Object> commomParamsMap=new HashMap<String,Object>();
         commomParamsMap.put(Constant.IMEI, DeviceUtils.getIMEI(mContext));
+//            commomParamsMap.put(Constant.IMEI, "");
+
         commomParamsMap.put(Constant.MODEL,DeviceUtils.getModel());
         commomParamsMap.put(Constant.LANGUAGE,DeviceUtils.getLanguage());
         commomParamsMap.put(Constant.os,DeviceUtils.getBuildVersionIncremental());
         commomParamsMap.put(Constant.RESOLUTION, DensityUtil.getScreenW(mContext)+"*"+DensityUtil.getScreenH(mContext));
+//            commomParamsMap.put(Constant.RESOLUTION, "");
+
         commomParamsMap.put(Constant.SDK,DeviceUtils.getBuildVersionSDK());
         commomParamsMap.put(Constant.DENSITY_SCALE_FACTOR,mContext.getResources().getDisplayMetrics().density+"");
 

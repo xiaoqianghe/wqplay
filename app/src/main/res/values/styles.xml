@@ -93,5 +93,28 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="DialoLoadinggAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/base_dialog_loading_start</item>
+        <item name="android:windowExitAnimation">@anim/base_dialog_loading_stop</item>
+    </style>
+
+
+    <style name="AbsDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+
+
+    <style name="ToolbarStyle" parent="Base.Widget.AppCompat.ActionBar">
+        <item name="android:minHeight">?attr/actionBarSize</item>
+    </style>
+
+
+
+
 
 </resources>

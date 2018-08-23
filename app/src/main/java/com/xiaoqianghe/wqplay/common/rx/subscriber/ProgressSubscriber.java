@@ -1,6 +1,7 @@
 package com.xiaoqianghe.wqplay.common.rx.subscriber;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.xiaoqianghe.wqplay.common.exception.BaseException;
 import com.xiaoqianghe.wqplay.ui.BaseView;
@@ -15,7 +16,11 @@ import io.reactivex.disposables.Disposable;
 
 public abstract class ProgressSubscriber<T> extends ErrHandlerSubscriber<T> {
 
+
+
+
     private BaseView mView;
+
     public ProgressSubscriber(Context context,BaseView view) {
         super(context);
         this.mView=view;
@@ -30,10 +35,7 @@ public abstract class ProgressSubscriber<T> extends ErrHandlerSubscriber<T> {
     public void onError(Throwable e) {
 
 //        super.onError(e);
-
-
         e.printStackTrace();
-
         BaseException baseException =  mErrorHandler.handleError(e);
         mView.showError(baseException.getDisplayMessage());
     }
@@ -46,9 +48,17 @@ public abstract class ProgressSubscriber<T> extends ErrHandlerSubscriber<T> {
     @Override
     public void onSubscribe(Disposable d) {
 //        super.onSubscribe(d);
-
         if(isShowProgress()){
             mView.showLoading();
         }
+    }
+
+    @Override
+    public void onNext(T t) {
+        if (null == t) {
+            Toast.makeText(mContext, "无数据", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
     }
 }

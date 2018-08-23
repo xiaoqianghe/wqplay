@@ -9,11 +9,10 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import java.util.List;
 
 /**
- * 菜鸟窝http://www.cniao5.com 一个高端的互联网技能学习平台
  *
  * @author Ivan
  * @version V1.0
- * @Package com.cniao5.cniao5play.service
+ * @Package
  * @Description: ${TODO}(用一句话描述该文件做什么)
  * @date
  */
