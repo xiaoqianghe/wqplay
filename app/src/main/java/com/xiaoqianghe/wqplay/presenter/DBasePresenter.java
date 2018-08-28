@@ -15,7 +15,7 @@ import com.xiaoqianghe.wqplay.ui.DBaseView;
  * @描述 : TODO 所有Presenter的基类
  */
 
-public class DBasePresenter<M,V extends DBaseView> {
+public class DBasePresenter<M,V extends BaseView> {
 
     protected M mModel;
     protected V mView;

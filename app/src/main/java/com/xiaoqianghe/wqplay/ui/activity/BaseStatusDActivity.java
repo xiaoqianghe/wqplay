@@ -31,7 +31,7 @@ import butterknife.Unbinder;
  * Description：//todo   有 几种状态的Activity 的基类
  */
 
-public abstract class BaseStatusDActivity<T extends DBasePresenter> extends AppCompatActivity implements DBaseView {
+public abstract class BaseStatusDActivity<T extends DBasePresenter> extends AppCompatActivity implements BaseView {
     private final String TAG = this.getClass().getSimpleName();
 
 

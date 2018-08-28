@@ -51,10 +51,23 @@ public class DTopListActivityPresenter extends DBasePresenter<DTopListActivityMo
 
 
 
+//        //@TODO  封装了的网络请求(没有使用Dagger2)
+//      HttpModuleManager.getInstance().getApiService().index()
+//              .compose(RxHttpResponseCompat.<IndexBean>compatResult())
+//              .subscribe(new ProgressDNewDialogSubscriber<IndexBean>(mContext,mView,true,false) {
+//                    @Override
+//                    public void onNext(IndexBean indexBean) {
+////                        super.onNext(indexBean);
+//                        mView.showResultData(indexBean);
+//                    }
+//                });
+
+
+
         //@TODO  封装了的网络请求(没有使用Dagger2)
-      HttpModuleManager.getInstance().getApiService().index()
-              .compose(RxHttpResponseCompat.<IndexBean>compatResult())
-              .subscribe(new ProgressDNewDialogSubscriber<IndexBean>(mContext,mView,true,false) {
+        HttpModuleManager.getInstance().getApiService().index()
+                .compose(RxHttpResponseCompat.<IndexBean>compatResult())
+                .subscribe(new ProgressDNewDialogSubscriber<IndexBean>(mContext,mView) {
                     @Override
                     public void onNext(IndexBean indexBean) {
 //                        super.onNext(indexBean);

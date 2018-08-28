@@ -83,8 +83,8 @@ public class DTopListActivity extends BaseStatusDActivity<DTopListActivityPresen
         ButterKnife.bind(this);
     }
 
-    @Override
-    public void showContent() {
-        showContentView();
-    }
+//    @Override
+//    public void showContent() {
+//        showContentView();
+//    }
 }

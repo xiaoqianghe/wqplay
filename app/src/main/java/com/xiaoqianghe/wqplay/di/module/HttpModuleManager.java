@@ -24,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Author：Wq
  * Date：2017/6/15 11:02
- * Description：//todo
+ * Description：//todo   非dagger2 模式下的网络请求的工具类
  */
 
 
@@ -128,4 +128,5 @@ public class HttpModuleManager {
     public ApiService provideApiService(Retrofit retrofit){
         return retrofit.create(ApiService.class);
     }
+    //=================================================================
 }

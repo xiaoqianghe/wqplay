@@ -174,8 +174,6 @@ public abstract class ProgressDialogFragment<T extends BasePresenter>extends Fra
     @Override
     public void dismissLoading() {
         showContentView();
-
-
     }
 
     @Override

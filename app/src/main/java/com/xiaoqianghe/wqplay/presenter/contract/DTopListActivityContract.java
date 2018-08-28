@@ -12,7 +12,7 @@ import com.xiaoqianghe.wqplay.ui.DBaseView;
 
 public interface DTopListActivityContract {
 
-    public  interface DTopListActivityView extends DBaseView {
+    public  interface DTopListActivityView extends BaseView {
 
         void showResultData(IndexBean indexBean);
     }

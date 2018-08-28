@@ -20,7 +20,7 @@ public abstract class ProgressDNewDialogSubscriber<T> extends ErrHandlerSubscrib
 
     private ProgressDialogHandler mProgressDialogHandler;
 
-    private DBaseView mView;
+    private BaseView mView;
 
     private Disposable mDisposable;
 
@@ -29,7 +29,7 @@ public abstract class ProgressDNewDialogSubscriber<T> extends ErrHandlerSubscrib
 
 
 
-    public ProgressDNewDialogSubscriber(Context context, DBaseView mView){
+    public ProgressDNewDialogSubscriber(Context context, BaseView mView){
 
         super(context);
         this.mView=mView;
@@ -44,7 +44,7 @@ public abstract class ProgressDNewDialogSubscriber<T> extends ErrHandlerSubscrib
 //        mProgressDialogHandler=new ProgressDialogHandler(context,true,this);
 //    }
 //
-    public ProgressDNewDialogSubscriber(Context context, DBaseView  mView,boolean isStartShow, boolean isEndDismiss) {
+    public ProgressDNewDialogSubscriber(Context context, BaseView  mView,boolean isStartShow, boolean isEndDismiss) {
         super(context);
         this.mView=mView;
         this.isStartShow=isStartShow;
@@ -101,8 +101,13 @@ public abstract class ProgressDNewDialogSubscriber<T> extends ErrHandlerSubscrib
             dismissDialog();
         }
 
+        //@TODO 这个地方的mView 层 的这个方法 其实就是为了显示Content的内容布局
+        mView.dismissLoading();
+//        mView.showContent();
 
-        mView.showContent();
+//
+//
+//        mView.showContentView();
     }
 
 
