@@ -14,6 +14,7 @@ import com.xiaoqianghe.wqplay.AppApplication;
 import com.xiaoqianghe.wqplay.R;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
 import com.xiaoqianghe.wqplay.presenter.BasePresenter;
+import com.xiaoqianghe.wqplay.ui.BaseView;
 
 import javax.inject.Inject;
 
@@ -29,7 +30,7 @@ import butterknife.Unbinder;
  * @描述 : TODO  所有普通Activity的页面的基类
  */
 
-public abstract class BaseVcActivity extends IBaseActivity {
+public abstract class BaseVcActivity extends IBaseActivity implements BaseView {
     private final String TAG = this.getClass().getSimpleName();
     protected AppApplication mApplication;
     private Unbinder mUnbinder;

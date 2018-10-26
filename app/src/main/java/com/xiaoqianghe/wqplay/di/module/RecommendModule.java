@@ -54,4 +54,6 @@ public class RecommendModule {
 
         return  new AppInfoModel(apiService);
     }
+
+
 }

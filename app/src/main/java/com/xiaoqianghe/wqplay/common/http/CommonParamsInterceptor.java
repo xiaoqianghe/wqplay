@@ -157,6 +157,11 @@ public class CommonParamsInterceptor implements Interceptor {
             Log.d(TAG,"CommonParamsInterceptor =======JsonSyntaxException e：："+e.toString());
             e.printStackTrace();
         }
+
+        //@todo 这里可以重新拦截      添加 Token
+
+
+
         return chain.proceed(request);
     }
 }

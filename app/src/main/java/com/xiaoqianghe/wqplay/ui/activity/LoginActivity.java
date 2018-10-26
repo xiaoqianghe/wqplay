@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.util.AsyncListUtil;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -75,6 +79,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     }
 
     @Override
+    public void checkoutNetType(String str) {
+
+    }
+
+    @Override
     public void showLoading() {
 
         btnLogin.showLoading();
@@ -137,6 +146,41 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
                 mPresenter.login(txtMobi.getText().toString().trim(),txtPassword.getText().toString().trim());
 
+
+            }
+        });
+
+        btnLogin.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return false;
+
+                //如果返回 true  则onTouchEvent 不会调用
+                 // 如果返回false 则会调用
+                // View 的 onTouchEvent 的优先级 比
+            }
+        });
+
+
+
+        txtPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                if(txtPassword.getText().toString().trim().equals("nettype")){
+                    // 这里需要切换环境
+
+                }
 
             }
         });

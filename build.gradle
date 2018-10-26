@@ -3,6 +3,8 @@
 buildscript {
     repositories {
         jcenter()
+//        google()
+//        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
@@ -17,6 +19,8 @@ allprojects {
     repositories {
         jcenter()
         maven { url "https://jitpack.io" }
+//        google()
+//        google()
     }
 
 
@@ -27,3 +31,6 @@ task clean(type: Delete) {
 }
 
 apply from : "config.gradle"
+
+
+

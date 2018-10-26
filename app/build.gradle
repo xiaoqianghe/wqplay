@@ -139,4 +139,20 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
 
 
+
+    //jessYan 的屏幕适配方案
+    implementation 'me.jessyan:autosize:0.9.1'
+
+
+}
+
+
+
+apply plugin: Plugin2
+class Plugin2 implements Plugin<Project>{
+
+    @Override
+    void apply(Project target) {
+        println("this is a plugin in the file 'build.gradle'...")
+    }
 }

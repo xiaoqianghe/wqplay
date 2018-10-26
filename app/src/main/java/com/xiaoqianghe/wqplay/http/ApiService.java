@@ -3,6 +3,7 @@ package com.xiaoqianghe.wqplay.http;
 import com.xiaoqianghe.wqplay.bean.SearchResult;
 import com.xiaoqianghe.wqplay.bean.Subject;
 import com.xiaoqianghe.wqplay.bean.SubjectDetail;
+import com.xiaoqianghe.wqplay.bean.UpLoadRsBean;
 import com.xiaoqianghe.wqplay.bean.requestbean.AppInfo;
 import com.xiaoqianghe.wqplay.bean.requestbean.BaseBean;
 import com.xiaoqianghe.wqplay.bean.requestbean.Category;
@@ -13,10 +14,12 @@ import com.xiaoqianghe.wqplay.bean.requestbean.PageBean;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 //import rx.Observable;
@@ -97,6 +100,18 @@ public interface ApiService {
 
     @GET("subject/{id}")
     Observable<BaseBean<SubjectDetail>> subjectDetail(@Path("id") int id);
+
+
+
+
+
+    //自定义的上传图片的 自定义接口
+    @POST("subject/{id}")
+    Observable<BaseBean<UpLoadRsBean>> upLoadData(@Part MultipartBody.Part file);
+
+
+
+
 
 
 

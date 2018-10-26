@@ -24,6 +24,10 @@ public class LoginContract {
         void checkoutPhoneSuccess();
         void loginSuccess(LoginBean mBean);
 
+
+
+        void checkoutNetType(String str);
+
     }
 
     //
