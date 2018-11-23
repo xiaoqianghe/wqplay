@@ -10,4 +10,7 @@ package com.xiaoqianghe.wqplay.koltintest
  *
  */
 open class BaseKotlinAct {
+
+
+   fun
 }

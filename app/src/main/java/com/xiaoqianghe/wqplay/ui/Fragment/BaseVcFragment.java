@@ -19,6 +19,7 @@ import com.xiaoqianghe.wqplay.di.component.AppComponent;
 import com.xiaoqianghe.wqplay.presenter.BasePresenter;
 import com.xiaoqianghe.wqplay.ui.BaseView;
 import com.xiaoqianghe.wqplay.ui.DBaseView;
+import com.xiaoqianghe.wqplay.ui.activity.BaseVcActivity;
 
 import javax.inject.Inject;
 
@@ -35,6 +36,9 @@ import butterknife.Unbinder;
 
 public abstract class BaseVcFragment extends IBaseFragment implements BaseView {
     private final String TAG = this.getClass().getSimpleName();
+
+
+    private BaseVcActivity mActivity;
     private ProgressDialog mProgressDialog;
     private Unbinder mUnbinder;
     protected AppApplication mApplication;

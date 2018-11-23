@@ -128,7 +128,6 @@ public class CommonParamsInterceptor implements Interceptor {
             if(body instanceof FormBody){ // form 表单
 
                 for (int i=0;i<((FormBody) body).size();i++){
-
                     rootMap.put(((FormBody) body).encodedName(i),((FormBody) body).encodedValue(i));
                 }
 
@@ -145,15 +144,11 @@ public class CommonParamsInterceptor implements Interceptor {
                 rootMap.put("publicParams",commomParamsMap); // 重新组装
                 String newJsonParams = mGson.toJson(rootMap); // {"page":0,"publicParams":{"imei":'xxxxx',"sdk":14,.....}}
                 request = request.newBuilder().post(RequestBody.create(JSON, newJsonParams)).build();
-
-
             }
 
         }
 
         } catch (JsonSyntaxException e) {
-
-
             Log.d(TAG,"CommonParamsInterceptor =======JsonSyntaxException e：："+e.toString());
             e.printStackTrace();
         }

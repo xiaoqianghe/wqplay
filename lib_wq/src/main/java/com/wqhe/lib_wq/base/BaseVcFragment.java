@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.wqhe.lib_wq.AppApplication;
+//import com.wqhe.lib_wq.AppApplication;
 import com.wqhe.lib_wq.R;
 
 

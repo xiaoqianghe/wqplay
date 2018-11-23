@@ -1,5 +1,6 @@
 package com.xiaoqianghe.wqplay.ui.Fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -41,6 +42,7 @@ import butterknife.Unbinder;
  * Description：//todo
  */
 
+@SuppressLint("ValidFragment")
 public class AppDetailFragment extends ProgressDialogFragment<AppDetailPresenter> implements AppInfoContract.AppDetailView {
 
     @BindView(R.id.view_gallery)
@@ -73,6 +75,7 @@ public class AppDetailFragment extends ProgressDialogFragment<AppDetailPresenter
 
     private AppInfoAdapter mAdapter;
 
+    @SuppressLint("ValidFragment")
     public AppDetailFragment(int appId) {
         this.appId = appId;
     }

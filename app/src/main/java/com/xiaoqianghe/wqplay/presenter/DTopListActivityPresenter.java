@@ -49,15 +49,15 @@ public class DTopListActivityPresenter extends DBasePresenter<DTopListActivityMo
 
 
 
-//
-//        //@TODO  封装了的网络请求
-//        mModel.index().compose(RxHttpResponseCompat.<IndexBean>compatResult())
-//                .subscribe(new ProgressDNewDialogSubscriber<IndexBean>(mContext,mView,false,false) {
-//                    @Override
-//                    public void onNext(IndexBean indexBean) {
-//                        mView.showResultData(indexBean);
-//                    }
-//                });
+
+        //@TODO  封装了的网络请求
+        mModel.index().compose(RxHttpResponseCompat.<IndexBean>compatResult())
+                .subscribe(new ProgressDNewDialogSubscriber<IndexBean>(mContext,mView,false,false) {
+                    @Override
+                    public void onNext(IndexBean indexBean) {
+                        mView.showResultData(indexBean);
+                    }
+                });
 
 
 
@@ -74,30 +74,30 @@ public class DTopListActivityPresenter extends DBasePresenter<DTopListActivityMo
 
 
 
-        //@TODO  封装了的网络请求(没有使用Dagger2)
-        HttpModuleManager.getInstance().getApiService().index()
-                .compose(RxHttpResponseCompat.<IndexBean>compatResult())
-                .subscribe(new ProgressDNewDialogSubscriber<IndexBean>(mContext,mView) {
-                    @Override
-                    public void onNext(IndexBean indexBean) {
-//                        super.onNext(indexBean);
-                        mView.showResultData(indexBean);
-                    }
-                });
+//        //@TODO  封装了的网络请求(没有使用Dagger2)
+//        HttpModuleManager.getInstance().getApiService().index()
+//                .compose(RxHttpResponseCompat.<IndexBean>compatResult())
+//                .subscribe(new ProgressDNewDialogSubscriber<IndexBean>(mContext,mView) {
+//                    @Override
+//                    public void onNext(IndexBean indexBean) {
+////                        super.onNext(indexBean);
+//                        mView.showResultData(indexBean);
+//                    }
+//                });
 
 
 
-
-        //@TODO 上传 图片
-        HttpModuleManager.getInstance().getApiService().upLoadData(RxUpLoadUtil.createRequestBody(""))
-                .compose(RxHttpResponseCompat.<UpLoadRsBean>compatResult())
-                .subscribe(new ProgressDNewDialogSubscriber<UpLoadRsBean>(mContext,mView) {
-                    @Override
-                    public void onNext(UpLoadRsBean mUpLoadRsBean) {
-//                        super.onNext(indexBean);
-//                        mView.showResultData(mUpLoadRsBean);
-                    }
-                });
+//
+//        //@TODO 上传 图片
+//        HttpModuleManager.getInstance().getApiService().upLoadData(RxUpLoadUtil.createRequestBody(""))
+//                .compose(RxHttpResponseCompat.<UpLoadRsBean>compatResult())
+//                .subscribe(new ProgressDNewDialogSubscriber<UpLoadRsBean>(mContext,mView) {
+//                    @Override
+//                    public void onNext(UpLoadRsBean mUpLoadRsBean) {
+////                        super.onNext(indexBean);
+////                        mView.showResultData(mUpLoadRsBean);
+//                    }
+//                });
 
 
     }

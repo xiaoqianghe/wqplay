@@ -9,10 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/lib_wq" />
-            <option value="$PROJECT_DIR$/module_plugin" />
             <option value="$PROJECT_DIR$/rxdownload2" />
-            <option value="$PROJECT_DIR$/wqlibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
