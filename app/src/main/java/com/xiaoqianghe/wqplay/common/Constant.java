@@ -39,6 +39,10 @@ public class Constant {
 
 
 
+    public static final String APP_NAME = "app_name";
+
+
+
 
     public interface TableType{
         public static final String TAB_HOME= "Home";

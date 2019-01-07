@@ -3,10 +3,10 @@ package com.xiaoqianghe.wqplay.di.module;
 import android.app.Application;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.xiaoqianghe.wqplay.BuildConfig;
 
 import com.xiaoqianghe.wqplay.common.http.CommonParamsInterceptor;
+import com.xiaoqianghe.wqplay.common.http.HttpLogger;
 import com.xiaoqianghe.wqplay.http.ApiService;
 
 import java.util.concurrent.TimeUnit;
@@ -18,7 +18,6 @@ import dagger.Provides;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -39,11 +38,22 @@ public class HttpModule {
     public OkHttpClient provideOkHttpClient(Application application, Gson gson){
         //Application application, Gson gson
         OkHttpClient.Builder builder=new OkHttpClient.Builder();
-        if(BuildConfig.DEBUG){
-            HttpLoggingInterceptor logging=new HttpLoggingInterceptor();
-            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-            builder.addInterceptor(logging);
-        }
+//        if(BuildConfig.DEBUG){
+//            HttpLoggingInterceptor logging=new HttpLoggingInterceptor();
+//            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+//            builder.addInterceptor(logging);
+//        }
+
+
+       if (BuildConfig.DEBUG) {
+           HttpLoggingInterceptor.Level level = HttpLoggingInterceptor.Level.BODY;
+           HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLogger());
+           loggingInterceptor.setLevel(level);
+           builder.addInterceptor(loggingInterceptor);
+       }
+
+
+
        return builder
 //                .addInterceptor(new CommonParamsInterceptor(application,gson))
                .addInterceptor(new CommonParamsInterceptor(application,gson))

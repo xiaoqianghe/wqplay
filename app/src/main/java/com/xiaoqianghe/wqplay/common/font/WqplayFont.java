@@ -40,12 +40,12 @@ public class WqplayFont implements ITypeface {
 
     @Override
     public String getMappingPrefix() {
-        return "cniao";
+        return "wqPlay";
     }
 
     @Override
     public String getFontName() {
-        return "cniao";
+        return "wqPlay";
     }
 
     @Override
@@ -88,6 +88,7 @@ public class WqplayFont implements ITypeface {
     }
 
     @Override
+
     public String getLicenseUrl() {
         return "http://wwww.cniao5.com/";
     }

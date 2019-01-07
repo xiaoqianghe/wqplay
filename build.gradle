@@ -5,6 +5,10 @@ buildscript {
         jcenter()
 //        google()
 //        google()
+
+
+
+        maven { url "https://jitpack.io" }//图片选择唱仓库
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'

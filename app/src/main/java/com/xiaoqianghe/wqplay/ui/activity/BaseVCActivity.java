@@ -30,7 +30,7 @@ import butterknife.Unbinder;
  * @描述 : TODO  所有普通Activity的页面的基类
  */
 
-public abstract class BaseVcActivity extends IBaseActivity implements BaseView {
+public abstract class BaseVCActivity extends IBaseActivity implements BaseView {
     private final String TAG = this.getClass().getSimpleName();
     protected AppApplication mApplication;
     private Unbinder mUnbinder;

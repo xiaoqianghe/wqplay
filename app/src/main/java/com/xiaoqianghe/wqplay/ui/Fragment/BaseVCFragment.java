@@ -4,7 +4,6 @@ package com.xiaoqianghe.wqplay.ui.Fragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +15,8 @@ import android.widget.TextView;
 import com.xiaoqianghe.wqplay.AppApplication;
 import com.xiaoqianghe.wqplay.R;
 import com.xiaoqianghe.wqplay.di.component.AppComponent;
-import com.xiaoqianghe.wqplay.presenter.BasePresenter;
 import com.xiaoqianghe.wqplay.ui.BaseView;
-import com.xiaoqianghe.wqplay.ui.DBaseView;
-import com.xiaoqianghe.wqplay.ui.activity.BaseVcActivity;
-
-import javax.inject.Inject;
+import com.xiaoqianghe.wqplay.ui.activity.BaseVCActivity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -34,11 +29,11 @@ import butterknife.Unbinder;
  * @描述 : TODO 所有的Fragment的基类
  */
 
-public abstract class BaseVcFragment extends IBaseFragment implements BaseView {
+public abstract class BaseVCFragment extends IBaseFragment implements BaseView {
     private final String TAG = this.getClass().getSimpleName();
 
 
-    private BaseVcActivity mActivity;
+    private BaseVCActivity mActivity;
     private ProgressDialog mProgressDialog;
     private Unbinder mUnbinder;
     protected AppApplication mApplication;
